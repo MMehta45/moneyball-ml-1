@@ -103,11 +103,7 @@ Branching Rules
 *   Examples: data\_cleaning, genetic\_loop, fastapi\_routes, react\_flow\_ui
     
 
-**How to Create a Branch:**
 
-Bash
-
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   git checkout main  git pull origin main  git checkout -b genetic_loop   `
 
 ⚙️ Development & PR Process
 ---------------------------
