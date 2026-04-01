@@ -1,0 +1,60 @@
+{
+  "classes": [
+    {
+      "course_id": "ARTS1301",
+      "name": "Art Appreciation",
+      "credit_hours": 3,
+      "prereqs": [],
+      "is_transferable": false,
+      "availability": [
+        "Fall",
+        "Spring"
+      ],
+      "difficulty": 0.2,
+      "expected_gpa": 3.1
+    },
+    {
+      "course_id": "CS1336",
+      "name": "Intro to CS",
+      "credit_hours": 3,
+      "prereqs": [],
+      "is_transferable": false,
+      "availability": [
+        "Fall",
+        "Spring"
+      ],
+      "difficulty": 0.5,
+      "expected_gpa": 3.1
+    },
+    {
+      "course_id": "CS1337",
+      "name": "Computer Science I",
+      "credit_hours": 3,
+      "prereqs": [
+        "CS1336"
+      ],
+      "is_transferable": false,
+      "availability": [
+        "Fall",
+        "Spring"
+      ],
+      "difficulty": 0.8,
+      "expected_gpa": 3.1
+    },
+    {
+      "course_id": "CS2336",
+      "name": "Computer Science II",
+      "credit_hours": 3,
+      "prereqs": [
+        "CS1337"
+      ],
+      "is_transferable": false,
+      "availability": [
+        "Fall",
+        "Spring"
+      ],
+      "difficulty": 0.9,
+      "expected_gpa": 3.1
+    }
+  ]
+}
