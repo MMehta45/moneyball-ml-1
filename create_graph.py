@@ -1,12 +1,25 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import json
 
-dummy_data = {
-    "CS1336": {"name": "Intro to CS", "credit_hours":3, "prereqs": [], "is_transferable": False, "availability": ["Fall", "Spring"], "difficulty": 0.5, "expected_gpa": 3.1},
-    "CS1337": {"name": "Computer Science I","credit_hours":3, "prereqs": ["CS1336"], "is_transferable": False, "availability": ["Fall", "Spring"],"difficulty": 0.8, "expected_gpa": 3.1},
-    "CS2336": {"name": "Computer Science II", "credit_hours":3,"prereqs": ["CS1337"], "is_transferable": False,"availability": ["Fall", "Spring"],"difficulty": 0.9, "expected_gpa": 3.1},
-    "ARTS1301": {"name": "Art Appreciation","credit_hours":3, "prereqs": [], "is_transferable": False, "availability": ["Fall", "Spring"],"difficulty": 0.2, "expected_gpa": 3.1}
-}
+def load_data_from_json(file_path):
+    with open(file_path, 'r') as file:
+        json_data = json.load(file)
+
+        # Converting list format into dictionary format for the create graph function
+        data = {}
+        for course in json_data["classes"]:
+            data[course["course_id"]]  = {
+                "name": course["name"],
+                "credit_hours": course["credit_hours"],
+                "prereqs": course["prereqs"],
+                "is_transferable": course["is_transferable"],
+                "availability": course["availability"],
+                "difficulty": course["difficulty"],
+                "expected_gpa": course["expected_gpa"]
+            }
+        
+        return data
 
 def create_graph(data):
     degree_flow = nx.DiGraph()
@@ -18,7 +31,8 @@ def create_graph(data):
     return degree_flow
            
 
-sample_graph = create_graph(dummy_data)
+data = load_data_from_json('classes.json')
+sample_graph = create_graph(data)
 
 position = nx.spring_layout(sample_graph)
 nx.draw_networkx_nodes(sample_graph, position, node_color='lightblue', node_size=2000)
