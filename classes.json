@@ -1,7 +1,6 @@
 {
-  "classes": [
-    {
-      "course_id": "ARTS1301",
+  "classes": {
+    "ARTS1301": {
       "name": "Art Appreciation",
       "credit_hours": 3,
       "prereqs": [],
@@ -10,11 +9,10 @@
         "Fall",
         "Spring"
       ],
-      "difficulty": 0.2,
+      "difficulty_score": 0.2,
       "expected_gpa": 3.1
     },
-    {
-      "course_id": "CS1336",
+    "CS1336": {
       "name": "Intro to CS",
       "credit_hours": 3,
       "prereqs": [],
@@ -23,11 +21,10 @@
         "Fall",
         "Spring"
       ],
-      "difficulty": 0.5,
+      "difficulty_score": 0.5,
       "expected_gpa": 3.1
     },
-    {
-      "course_id": "CS1337",
+    "CS1337": {
       "name": "Computer Science I",
       "credit_hours": 3,
       "prereqs": [
@@ -38,11 +35,10 @@
         "Fall",
         "Spring"
       ],
-      "difficulty": 0.8,
+      "difficulty_score": 0.8,
       "expected_gpa": 3.1
     },
-    {
-      "course_id": "CS2336",
+    "CS2336": {
       "name": "Computer Science II",
       "credit_hours": 3,
       "prereqs": [
@@ -53,8 +49,10 @@
         "Fall",
         "Spring"
       ],
-      "difficulty": 0.9,
+      "difficulty_score": 0.9,
       "expected_gpa": 3.1
     }
-  ]
+  }
 }
+
+

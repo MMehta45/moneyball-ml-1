@@ -8,14 +8,14 @@ def load_data_from_json(file_path):
 
         # Converting list format into dictionary format for the create graph function
         data = {}
-        for course in json_data["classes"]:
-            data[course["course_id"]]  = {
+        for course_id, course in json_data["classes"].items():
+            data[course_id]  = {
                 "name": course["name"],
                 "credit_hours": course["credit_hours"],
                 "prereqs": course["prereqs"],
                 "is_transferable": course["is_transferable"],
                 "availability": course["availability"],
-                "difficulty": course["difficulty"],
+                "difficulty_score": course["difficulty_score"],
                 "expected_gpa": course["expected_gpa"]
             }
         
@@ -25,7 +25,7 @@ def create_graph(data):
     degree_flow = nx.DiGraph()
     for course in data:
         info = data[course]
-        degree_flow.add_node(course, name=info['name'], credit_hours=info['credit_hours'], is_transferable=info['is_transferable'],difficulty=info['difficulty'], expected_gpa=info["expected_gpa"])        
+        degree_flow.add_node(course, name=info['name'], credit_hours=info['credit_hours'], is_transferable=info['is_transferable'],difficulty=info['difficulty_score'], expected_gpa=info["expected_gpa"])        
         for prereq_course in info["prereqs"]:
            degree_flow.add_edge(prereq_course, course)
     return degree_flow
