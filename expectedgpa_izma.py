@@ -6,8 +6,9 @@
 import json
 
 # assume json is called x
+with open("courses.json", "r") as f:
+    courses = json.load(f)
 
-courses = json.loads(x)
 
 
 #develop a function that just takes class name and grade
@@ -52,19 +53,9 @@ class_grades = {
     "Social and Behavioral Sciences" : 3.19,
 }
 
+for course in class_grades:
+    calculate_gpa(course)
 
-letter_gpa = {
-    "A+" : 4.0,
-    "A" : 4.0,
-    "A-" : 3.67,
-    "B+" : 3.33,
-    "B" : 3,
-    "B-" : 2.67,
-    "C+" : 2.33,
-    "C" : 2,
-    "C-" : 1.67,
-    "D+" : 1.33,
-    "D" : 1,
-    "D-" : 0.67,
-    "F" : 0
-}
+
+with open("courses.json", "w") as f:
+    json.dump(courses, f, indent=4)
