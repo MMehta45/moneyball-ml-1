@@ -1,0 +1,1629 @@
+{
+    "CS1436": {
+        "name": "Programming Fundamentals",
+        "credit_hours": 4,
+        "prereqs": [],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_score": null,
+        "expected_gpa": 2.82,
+        "difficulty_Score": 1.18
+    },
+    "MATH2413": {
+        "name": "Differential Calculus",
+        "credit_hours": 4,
+        "prereqs": [
+            "MATH2312",
+            "MATH2306",
+            "ALEKS"
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 1.67,
+        "expected_gpa": 2.33
+    },
+    "ECS1100": {
+        "name": "Introduction to Engineering and Computer Science",
+        "credit_hours": 1,
+        "prereqs": [],
+        "is_transferable": false,
+        "availability": [
+            "Fall"
+        ],
+        "difficulty_Score": 0.46,
+        "expected_gpa": 3.54
+    },
+    "CS1200": {
+        "name": "Introduction to Compuer Science and Software Engineering",
+        "credit_hours": 2,
+        "prereqs": [],
+        "is_transferable": false,
+        "availability": [
+            "Fall"
+        ],
+        "difficulty_Score": 0.54,
+        "expected_gpa": 3.46
+    },
+    "CS1337": {
+        "name": "Computer Science I",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS1436"
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 1.08,
+        "expected_gpa": 2.92
+    },
+    "MATH2414": {
+        "name": "Integral Calculus",
+        "credit_hours": 4,
+        "prereqs": [
+            "MATH2413",
+            "MATH2417"
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 1.59,
+        "expected_gpa": 2.41
+    },
+    "PHYS2325/2125": {
+        "name": "Mechanics/Physics Laboratory I",
+        "credit_hours": 4,
+        "prereqs": [
+            "MATH2413/MATH2417",
+            "MATH2414/2419"
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 0.54,
+        "expected_gpa": 3.46
+    },
+    "CS2305": {
+        "name": "Discrete Mathematics for Computing I",
+        "credit_hours": 3,
+        "prereqs": [
+            "MATH2413/MATH2417"
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 1.04,
+        "expected_gpa": 2.96
+    },
+    "CS2336(Java)": {
+        "name": "Computer Science II",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS1337"
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 0.82,
+        "expected_gpa": 3.18
+    },
+    "CS2340": {
+        "name": "Computer Architecture",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS1337",
+            "CS2305"
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "PHYS2326/2126": {
+        "name": "Electromagnetism and Waves/Physics II Laboratory",
+        "credit_hours": 4,
+        "prereqs": [
+            "MATH2413/MATH2417"
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 0.59,
+        "expected_gpa": 3.41
+    },
+    "MATH2418": {
+        "name": "Linear Algebra",
+        "credit_hours": 4,
+        "prereqs": [
+            "MATH2413/MATH2417"
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 1.42,
+        "expected_gpa": 2.58
+    },
+    "ECS2390": {
+        "name": "Professional Responsibility in Computer Science and Software Engineering",
+        "credit_hours": 3,
+        "prereqs": [
+            "RHET1302"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 0.54,
+        "expected_gpa": 3.46
+    },
+    "CS3341": {
+        "name": "Probability and Statistics in Computer Science and Software Engineering",
+        "credit_hours": 3,
+        "prereqs": [
+            "MATH2414/MATH2419",
+            "CS2305",
+            "MATH2418"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 1.13,
+        "expected_gpa": 2.87
+    },
+    "CS3345": {
+        "name": "Data Structures and Foundation of Algorithmic Analysis",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS2336/CS2337",
+            "CS2305"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 0.75,
+        "expected_gpa": 3.25
+    },
+    "CS3377": {
+        "name": "Systems Programming in UNIX and Other Environments",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS2336/CS2337"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 0.8,
+        "expected_gpa": 3.2
+    },
+    "CS4337": {
+        "name": "Programming Language Paradigms",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS2336",
+            "CS2305",
+            "CS2340"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4341/4141": {
+        "name": "Digital Logic and Computer Design/Digital Systems Laboratory",
+        "credit_hours": 4,
+        "prereqs": [
+            "PHYS2326/2126",
+            "CS2340"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS3354": {
+        "name": "Software Engineering",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS2336/2337",
+            "CS2305",
+            "ECS2390"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 0.59,
+        "expected_gpa": 3.41
+    },
+    "CS4349": {
+        "name": "Advanced Algorithm Design and Analysis",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS2305",
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS3162": {
+        "name": "Professional Responsibility in Computer Science and Software Engineering",
+        "credit_hours": 1,
+        "prereqs": [
+            "ECS2390",
+            "GOVT2305"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": 0.37,
+        "expected_gpa": 3.63
+    },
+    "CS4348": {
+        "name": "Operating Systems Concepts",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS2340",
+            "CS3377",
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4384": {
+        "name": "Automota Theory",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS2305"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4347": {
+        "name": "Database Systems",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4485": {
+        "name": "Computer Science Project",
+        "credit_hours": 4,
+        "prereqs": [
+            "CS3345",
+            "CS3354",
+            "CS4XXX",
+            "CS4XXX",
+            "CS4XXX"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "RHET1302": {
+        "name": "Rhetoric(Core)",
+        "credit_hours": 4,
+        "prereqs": [],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 0.77,
+        "expected_gpa": 3.23
+    },
+    "GOVT2305": {
+        "name": "American National Government(Core)",
+        "credit_hours": 3,
+        "prereqs": [],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": 0.86,
+        "expected_gpa": 3.14
+    },
+    "GOVT2306": {
+        "name": "State and Local Government(Core)",
+        "credit_hours": 3,
+        "prereqs": [],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4334": {
+        "name": "Numerical Analysis",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS1337",
+            "MATH2418",
+            "MATH2451/MATH3351"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4336": {
+        "name": "Advanced Java",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS3354"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4352": {
+        "name": "Introduction to Human-Computer Interaction",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS1337"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4361": {
+        "name": "Computer Graphics",
+        "credit_hours": 3,
+        "prereqs": [
+            "MATH2418",
+            "CS2336",
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4365": {
+        "name": "Artifical Intelligence",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4375": {
+        "name": "Introduction to Machine Learning",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS3341",
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4376": {
+        "name": "Object-Oriented Design",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS2336",
+            "CS3354"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4386": {
+        "name": "Compiler Design",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS1337"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4389": {
+        "name": "Data and Applications Security",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS4347"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4390": {
+        "name": "Computer Networks",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4391": {
+        "name": "Introduction to Computer Vision",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4392": {
+        "name": "Computer Animation",
+        "credit_hours": 3,
+        "prereqs": [
+            "MATH2418",
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4393": {
+        "name": "Computer and Network Security",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS4348",
+            "CS4390"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4394": {
+        "name": "Implementation of Modern Operating Systems",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS4348"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4395": {
+        "name": "Human Language Technologies",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS3341",
+            "CS3345"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4396": {
+        "name": "Networking Laboratory",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS4348"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4397": {
+        "name": "Embedded Computer Systems",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS4348"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4398": {
+        "name": "Digital Forensics",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS4348",
+            "CS4390"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CS4399/NotComplete": {
+        "name": "Senior Honors in Computer Science",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS2336",
+            "CS2305"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_score": 0.7,
+        "expected_gpa": 3.1
+    },
+    "CS4459": {
+        "name": "Cyber Attack and Defense Laboratory",
+        "credit_hours": 4,
+        "prereqs": [
+            "CS2340",
+            "CS3345",
+            "CS3377"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "EE4325": {
+        "name": "Introduction to VLSI Design",
+        "credit_hours": 3,
+        "prereqs": [
+            "CS4341"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "SE4351": {
+        "name": "Requirements Engineering",
+        "credit_hours": 3,
+        "prereqs": [
+            "SE3306",
+            "3354"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "SE4352": {
+        "name": "Software Architecture and Design",
+        "credit_hours": 3,
+        "prereqs": [
+            "SE3306",
+            "3354"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "SE4367": {
+        "name": "Software Testing, Verification, Validation and Quality Assurance",
+        "credit_hours": 3,
+        "prereqs": [
+            "SE3306",
+            "3354"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "SE4381": {
+        "name": "Software Project Planning and Management",
+        "credit_hours": 3,
+        "prereqs": [
+            "SE3306",
+            "3354"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "AMS2341": {
+        "name": "American Studies for the Twenty-First Century",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "ATCM2300": {
+        "name": "Introduction to TechnoCulture",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "AMS2322": {
+        "name": "Media Histories",
+        "credit_hours": 3,
+        "prereqs": [
+            "RHET1302"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "AMS2325": {
+        "name": "Introduction to Ethnic Studies",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "COMM1320": {
+        "name": "Interpersonal Communication ",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "COMM2314": {
+        "name": "Oral Interpretation",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "FILM1303": {
+        "name": "Transnational Film and Video",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST2340": {
+        "name": "Middle East Civilizations",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST2341": {
+        "name": "East Asian Civilizations",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST2350": {
+        "name": "Latin American Civilizations",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST2360": {
+        "name": "European Civilizations",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST2370": {
+        "name": "The Holocaust",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HUMA1301": {
+        "name": "Exploration of the Humanities",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "LIT1301": {
+        "name": "Introduction to Literature",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "LIT2322": {
+        "name": "Survey of African-American and African Diaspora Literatures",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "LIT2329": {
+        "name": "Introduction to Ethnic American Literature",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "LIT2331": {
+        "name": "Introduction to World Literature",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "PHIL1301": {
+        "name": " Introduction to Philosophy",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "PHIL1305": {
+        "name": "Introduction to Philosophy of Religion",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "PHIL1306": {
+        "name": "Introduction to Ethics",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "PHIL2316": {
+        "name": "History of Philosophy I",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "AHS1303": {
+        "name": "Survey of Western Art History: Ancient to Medieval",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "AHS1304": {
+        "name": "Survey of Western Art History: Renaissance to Modern",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "AHS2331": {
+        "name": "Understanding Art",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "ARTS1301": {
+        "name": "Exploration of the Arts",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "ATCM2321": {
+        "name": "Reading Media Critically",
+        "credit_hours": 3,
+        "prereqs": [
+            "RHET1302"
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CRWT2301": {
+        "name": "Introduction to Creative Writing",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "DANC1305": {
+        "name": "Introduction to World Dance Forms",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "DANC1310": {
+        "name": "Understanding Dance",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "FILM2332": {
+        "name": "Understanding Film",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "LIT1311": {
+        "name": "The Art of Fiction",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "LIT1315": {
+        "name": "The Art of Poetry",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "MUSI1306": {
+        "name": "Understanding Music",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "MUSI2321": {
+        "name": "Music Cultures of the World",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "MUSI2322": {
+        "name": "Music in Western Civilization",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "PHIL1307": {
+        "name": "Introduction to Philosophy of Art",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "THEA1310": {
+        "name": "Understanding Theatre",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST1301": {
+        "name": "U.S. History Survey to Civil War",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST1302": {
+        "name": "U.S. History Survey from Civil War",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST2301": {
+        "name": "History of Texas",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST2330": {
+        "name": "Themes and Ideas in American History",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST2381": {
+        "name": "African-American History",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "HIST2384": {
+        "name": "U.S. Women from Settlement to Present",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "BA1310": {
+        "name": "Making Choices in Free Market Systems",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "BA1320": {
+        "name": "Business in a Global World",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CLDP2314": {
+        "name": "Lifespan Development",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CRIM1301": {
+        "name": "Introduction to Criminal Justice",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "CRIM1307": {
+        "name": "Introduction to Crime and Criminology",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "ECON2301": {
+        "name": "Principles of Macroeconomics",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "ECON2302": {
+        "name": "Principles of Microeconomics",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "GEOG2303": {
+        "name": "World Regional Geography",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "GST2300": {
+        "name": "Introduction to Gender Studies",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "LIT1331": {
+        "name": "Literature and Anthropology",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "PA2325": {
+        "name": "Introduction to Public and Nonprofit Management",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "PSY2301": {
+        "name": "Introduction to Psychology",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "SOC1301": {
+        "name": "Introduction to Sociology",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": true,
+        "availability": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "SOC1306": {
+        "name": "Contemporary Social Issues",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    },
+    "SOC2300": {
+        "name": "Introduction to Gender Studies",
+        "credit_hours": 3,
+        "prereqs": [
+            ""
+        ],
+        "is_transferable": false,
+        "availability": [
+            "Fall",
+            "Spring"
+        ],
+        "difficulty_Score": null,
+        "expected_gpa": null
+    }
+}
