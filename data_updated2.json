@@ -8,17 +8,17 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_score": null,
-        "expected_gpa": 2.82,
-        "difficulty_Score": 1.18
+        "difficulty_score": 1.18,
+        "expected_gpa": 2.82
+        
     },
     "MATH2413": {
         "name": "Differential Calculus",
         "credit_hours": 4,
         "prereqs": [
             "MATH2312",
-            "MATH2306",
-            "ALEKS"
+            "MATH2306"
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -28,6 +28,7 @@
         ],
         "difficulty_Score": 1.67,
         "expected_gpa": 2.33
+        
     },
     "ECS1100": {
         "name": "Introduction to Engineering and Computer Science",
@@ -39,6 +40,7 @@
         ],
         "difficulty_Score": 0.46,
         "expected_gpa": 3.54
+        
     },
     "CS1200": {
         "name": "Introduction to Compuer Science and Software Engineering",
@@ -50,6 +52,7 @@
         ],
         "difficulty_Score": 0.54,
         "expected_gpa": 3.46
+        
     },
     "CS1337": {
         "name": "Computer Science I",
@@ -65,6 +68,7 @@
         ],
         "difficulty_Score": 1.08,
         "expected_gpa": 2.92
+        
     },
     "MATH2414": {
         "name": "Integral Calculus",
@@ -81,6 +85,7 @@
         ],
         "difficulty_Score": 1.59,
         "expected_gpa": 2.41
+        
     },
     "PHYS2325/2125": {
         "name": "Mechanics/Physics Laboratory I",
@@ -97,6 +102,7 @@
         ],
         "difficulty_Score": 0.54,
         "expected_gpa": 3.46
+        
     },
     "CS2305": {
         "name": "Discrete Mathematics for Computing I",
@@ -112,6 +118,7 @@
         ],
         "difficulty_Score": 1.04,
         "expected_gpa": 2.96
+        
     },
     "CS2336(Java)": {
         "name": "Computer Science II",
@@ -127,6 +134,7 @@
         ],
         "difficulty_Score": 0.82,
         "expected_gpa": 3.18
+        
     },
     "CS2340": {
         "name": "Computer Architecture",
@@ -141,8 +149,8 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 1.15,
+        "expected_gpa": 2.85
     },
     "PHYS2326/2126": {
         "name": "Electromagnetism and Waves/Physics II Laboratory",
@@ -158,6 +166,7 @@
         ],
         "difficulty_Score": 0.59,
         "expected_gpa": 3.41
+        
     },
     "MATH2418": {
         "name": "Linear Algebra",
@@ -173,6 +182,7 @@
         ],
         "difficulty_Score": 1.42,
         "expected_gpa": 2.58
+        
     },
     "ECS2390": {
         "name": "Professional Responsibility in Computer Science and Software Engineering",
@@ -188,6 +198,7 @@
         ],
         "difficulty_Score": 0.54,
         "expected_gpa": 3.46
+        
     },
     "CS3341": {
         "name": "Probability and Statistics in Computer Science and Software Engineering",
@@ -205,6 +216,7 @@
         ],
         "difficulty_Score": 1.13,
         "expected_gpa": 2.87
+        
     },
     "CS3345": {
         "name": "Data Structures and Foundation of Algorithmic Analysis",
@@ -221,6 +233,7 @@
         ],
         "difficulty_Score": 0.75,
         "expected_gpa": 3.25
+        
     },
     "CS3377": {
         "name": "Systems Programming in UNIX and Other Environments",
@@ -236,6 +249,7 @@
         ],
         "difficulty_Score": 0.8,
         "expected_gpa": 3.2
+        
     },
     "CS4337": {
         "name": "Programming Language Paradigms",
@@ -251,8 +265,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.904,
+        "expected_gpa": 3.096
+        
     },
     "CS4341/4141": {
         "name": "Digital Logic and Computer Design/Digital Systems Laboratory",
@@ -267,8 +282,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.846,
+        "expected_gpa": 3.154
+        
     },
     "CS3354": {
         "name": "Software Engineering",
@@ -286,6 +302,7 @@
         ],
         "difficulty_Score": 0.59,
         "expected_gpa": 3.41
+        
     },
     "CS4349": {
         "name": "Advanced Algorithm Design and Analysis",
@@ -300,8 +317,8 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.86,
+        "expected_gpa": 3.14
     },
     "CS3162": {
         "name": "Professional Responsibility in Computer Science and Software Engineering",
@@ -317,6 +334,7 @@
         ],
         "difficulty_Score": 0.37,
         "expected_gpa": 3.63
+        
     },
     "CS4348": {
         "name": "Operating Systems Concepts",
@@ -332,8 +350,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 1.012,
+        "expected_gpa": 2.988
+        
     },
     "CS4384": {
         "name": "Automota Theory",
@@ -347,8 +366,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.786,
+        "expected_gpa": 3.214
+        
     },
     "CS4347": {
         "name": "Database Systems",
@@ -362,8 +382,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.659,
+        "expected_gpa": 3.341
+        
     },
     "CS4485": {
         "name": "Computer Science Project",
@@ -381,8 +402,8 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.2,
+        "expected_gpa": 3.80
     },
     "RHET1302": {
         "name": "Rhetoric(Core)",
@@ -396,6 +417,7 @@
         ],
         "difficulty_Score": 0.77,
         "expected_gpa": 3.23
+       
     },
     "GOVT2305": {
         "name": "American National Government(Core)",
@@ -409,6 +431,7 @@
         ],
         "difficulty_Score": 0.86,
         "expected_gpa": 3.14
+        
     },
     "GOVT2306": {
         "name": "State and Local Government(Core)",
@@ -420,8 +443,8 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.65,
+        "expected_gpa": 3.35
     },
     "CS4334": {
         "name": "Numerical Analysis",
@@ -436,8 +459,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 1.174,
+        "expected_gpa": 2.826
+        
     },
     "CS4336": {
         "name": "Advanced Java",
@@ -450,8 +474,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.757,
+        "expected_gpa": 3.243,
+        "difficulty_score": 0.757
     },
     "CS4352": {
         "name": "Introduction to Human-Computer Interaction",
@@ -463,8 +488,9 @@
         "availability": [
             "Fall"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.243,
+        "expected_gpa": 3.757
+        
     },
     "CS4361": {
         "name": "Computer Graphics",
@@ -479,8 +505,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.772,
+        "expected_gpa": 3.228
+        
     },
     "CS4365": {
         "name": "Artifical Intelligence",
@@ -494,8 +521,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.893,
+        "expected_gpa": 3.107
+        
     },
     "CS4375": {
         "name": "Introduction to Machine Learning",
@@ -510,8 +538,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.756,
+        "expected_gpa": 3.244
+        
     },
     "CS4376": {
         "name": "Object-Oriented Design",
@@ -526,8 +555,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.962,
+        "expected_gpa": 3.038
+        
     },
     "CS4386": {
         "name": "Compiler Design",
@@ -539,8 +569,9 @@
         "availability": [
             "Fall"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 1.205,
+        "expected_gpa": 2.795
+        
     },
     "CS4389": {
         "name": "Data and Applications Security",
@@ -552,8 +583,9 @@
         "availability": [
             "Fall"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.701,
+        "expected_gpa": 3.299
+        
     },
     "CS4390": {
         "name": "Computer Networks",
@@ -567,8 +599,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.949,
+        "expected_gpa": 3.051
+        
     },
     "CS4391": {
         "name": "Introduction to Computer Vision",
@@ -581,8 +614,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.76,
+        "expected_gpa": 3.24
+        
     },
     "CS4392": {
         "name": "Computer Animation",
@@ -595,8 +629,9 @@
         "availability": [
             "Fall"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.813,
+        "expected_gpa": 3.187
+        
     },
     "CS4393": {
         "name": "Computer and Network Security",
@@ -610,8 +645,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 1.046,
+        "expected_gpa": 2.954
+        
     },
     "CS4394": {
         "name": "Implementation of Modern Operating Systems",
@@ -624,8 +660,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.667,
+        "expected_gpa": 3.333
+        
     },
     "CS4395": {
         "name": "Human Language Technologies",
@@ -639,8 +676,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.577,
+        "expected_gpa": 3.423
+        
     },
     "CS4396": {
         "name": "Networking Laboratory",
@@ -653,8 +691,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.834,
+        "expected_gpa": 3.166
+       
     },
     "CS4397": {
         "name": "Embedded Computer Systems",
@@ -667,8 +706,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.793,
+        "expected_gpa": 3.207
+       
     },
     "CS4398": {
         "name": "Digital Forensics",
@@ -682,8 +722,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.872,
+        "expected_gpa": 3.128
+        
     },
     "CS4399/NotComplete": {
         "name": "Senior Honors in Computer Science",
@@ -712,8 +753,8 @@
         "availability": [
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.71,
+        "expected_gpa": 3.29
     },
     "EE4325": {
         "name": "Introduction to VLSI Design",
@@ -727,8 +768,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.924,
+        "expected_gpa": 3.076
+        
     },
     "SE4351": {
         "name": "Requirements Engineering",
@@ -742,8 +784,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.701,
+        "expected_gpa": 3.299
+       
     },
     "SE4352": {
         "name": "Software Architecture and Design",
@@ -757,8 +800,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.699,
+        "expected_gpa": 3.301
+        
     },
     "SE4367": {
         "name": "Software Testing, Verification, Validation and Quality Assurance",
@@ -772,8 +816,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 1.064,
+        "expected_gpa": 2.936
+        
     },
     "SE4381": {
         "name": "Software Project Planning and Management",
@@ -787,8 +832,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.733,
+        "expected_gpa": 3.267
+        
     },
     "AMS2341": {
         "name": "American Studies for the Twenty-First Century",
@@ -802,8 +848,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "ATCM2300": {
         "name": "Introduction to TechnoCulture",
@@ -816,8 +863,9 @@
             "Fall",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+       
     },
     "AMS2322": {
         "name": "Media Histories",
@@ -830,8 +878,8 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.84,
+        "expected_gpa": 3.16
     },
     "AMS2325": {
         "name": "Introduction to Ethnic Studies",
@@ -844,8 +892,8 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.41,
+        "expected_gpa": 3.59
     },
     "COMM1320": {
         "name": "Interpersonal Communication ",
@@ -857,8 +905,9 @@
         "availability": [
             "Fall"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "COMM2314": {
         "name": "Oral Interpretation",
@@ -871,8 +920,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "FILM1303": {
         "name": "Transnational Film and Video",
@@ -886,8 +936,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "HIST2340": {
         "name": "Middle East Civilizations",
@@ -900,8 +951,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "HIST2341": {
         "name": "East Asian Civilizations",
@@ -914,8 +966,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "HIST2350": {
         "name": "Latin American Civilizations",
@@ -928,8 +981,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "HIST2360": {
         "name": "European Civilizations",
@@ -942,8 +996,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "HIST2370": {
         "name": "The Holocaust",
@@ -956,8 +1011,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "HUMA1301": {
         "name": "Exploration of the Humanities",
@@ -971,8 +1027,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "LIT1301": {
         "name": "Introduction to Literature",
@@ -986,8 +1043,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "LIT2322": {
         "name": "Survey of African-American and African Diaspora Literatures",
@@ -1000,8 +1058,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "LIT2329": {
         "name": "Introduction to Ethnic American Literature",
@@ -1014,8 +1073,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "LIT2331": {
         "name": "Introduction to World Literature",
@@ -1029,8 +1089,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "PHIL1301": {
         "name": " Introduction to Philosophy",
@@ -1044,8 +1105,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "PHIL1305": {
         "name": "Introduction to Philosophy of Religion",
@@ -1057,8 +1119,9 @@
         "availability": [
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "PHIL1306": {
         "name": "Introduction to Ethics",
@@ -1072,8 +1135,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+       
     },
     "PHIL2316": {
         "name": "History of Philosophy I",
@@ -1086,8 +1150,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.9,
+        "expected_gpa": 3.1
+        
     },
     "AHS1303": {
         "name": "Survey of Western Art History: Ancient to Medieval",
@@ -1099,8 +1164,9 @@
         "availability": [
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "AHS1304": {
         "name": "Survey of Western Art History: Renaissance to Modern",
@@ -1112,8 +1178,9 @@
         "availability": [
             "Fall"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "AHS2331": {
         "name": "Understanding Art",
@@ -1127,8 +1194,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "ARTS1301": {
         "name": "Exploration of the Arts",
@@ -1142,8 +1210,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "ATCM2321": {
         "name": "Reading Media Critically",
@@ -1157,8 +1226,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "CRWT2301": {
         "name": "Introduction to Creative Writing",
@@ -1172,8 +1242,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "DANC1305": {
         "name": "Introduction to World Dance Forms",
@@ -1187,8 +1258,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "DANC1310": {
         "name": "Understanding Dance",
@@ -1202,8 +1274,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "FILM2332": {
         "name": "Understanding Film",
@@ -1217,8 +1290,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "LIT1311": {
         "name": "The Art of Fiction",
@@ -1232,8 +1306,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "LIT1315": {
         "name": "The Art of Poetry",
@@ -1247,8 +1322,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "MUSI1306": {
         "name": "Understanding Music",
@@ -1262,8 +1338,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "MUSI2321": {
         "name": "Music Cultures of the World",
@@ -1277,8 +1354,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "MUSI2322": {
         "name": "Music in Western Civilization",
@@ -1292,8 +1370,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "PHIL1307": {
         "name": "Introduction to Philosophy of Art",
@@ -1307,8 +1386,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "THEA1310": {
         "name": "Understanding Theatre",
@@ -1322,8 +1402,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.62,
+        "expected_gpa": 3.38
+        
     },
     "HIST1301": {
         "name": "U.S. History Survey to Civil War",
@@ -1337,8 +1418,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.79,
+        "expected_gpa": 3.21
+        
     },
     "HIST1302": {
         "name": "U.S. History Survey from Civil War",
@@ -1352,8 +1434,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.79,
+        "expected_gpa": 3.21
+        
     },
     "HIST2301": {
         "name": "History of Texas",
@@ -1365,8 +1448,9 @@
         "availability": [
             "Fall"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.79,
+        "expected_gpa": 3.21
+        
     },
     "HIST2330": {
         "name": "Themes and Ideas in American History",
@@ -1378,8 +1462,9 @@
         "availability": [
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.79,
+        "expected_gpa": 3.21
+        
     },
     "HIST2381": {
         "name": "African-American History",
@@ -1392,8 +1477,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.79,
+        "expected_gpa": 3.21
+        
     },
     "HIST2384": {
         "name": "U.S. Women from Settlement to Present",
@@ -1406,8 +1492,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.79,
+        "expected_gpa": 3.21
+        
     },
     "BA1310": {
         "name": "Making Choices in Free Market Systems",
@@ -1420,8 +1507,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "BA1320": {
         "name": "Business in a Global World",
@@ -1435,8 +1523,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "CLDP2314": {
         "name": "Lifespan Development",
@@ -1449,8 +1538,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "CRIM1301": {
         "name": "Introduction to Criminal Justice",
@@ -1464,8 +1554,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.1
+        
     },
     "CRIM1307": {
         "name": "Introduction to Crime and Criminology",
@@ -1478,8 +1569,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "ECON2301": {
         "name": "Principles of Macroeconomics",
@@ -1493,8 +1585,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "ECON2302": {
         "name": "Principles of Microeconomics",
@@ -1508,8 +1601,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+    
     },
     "GEOG2303": {
         "name": "World Regional Geography",
@@ -1523,8 +1617,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "GST2300": {
         "name": "Introduction to Gender Studies",
@@ -1537,8 +1632,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "LIT1331": {
         "name": "Literature and Anthropology",
@@ -1551,8 +1647,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "PA2325": {
         "name": "Introduction to Public and Nonprofit Management",
@@ -1565,8 +1662,9 @@
             "Fall",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "PSY2301": {
         "name": "Introduction to Psychology",
@@ -1580,8 +1678,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "SOC1301": {
         "name": "Introduction to Sociology",
@@ -1595,8 +1694,9 @@
             "Spring",
             "Summer"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "SOC1306": {
         "name": "Contemporary Social Issues",
@@ -1609,8 +1709,9 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+        
     },
     "SOC2300": {
         "name": "Introduction to Gender Studies",
@@ -1623,7 +1724,7 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_Score": null,
-        "expected_gpa": null
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
     }
 }
