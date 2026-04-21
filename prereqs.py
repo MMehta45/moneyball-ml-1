@@ -1,15 +1,11 @@
 import json
-from collections import Counter
 
-with open("data.json", "r") as f:
+with open("data_updated2.json", "r") as f:
     data = json.load(f)
 
 schedule = ["CS1436", "CS1337"]
 
 score = 0
-
-#what about freshman classes with no prerequisites
-#parse through and count how many classes its a prereq for
 
 prereq_count = {}
 
@@ -19,8 +15,11 @@ for courses in data:
 
 #for schedule in shcedules:
 for i, course in enumerate(schedule):
+    #sequential proximity scoring
     if i != 0 and schedule[i-1] in data[course]["prereqs"]:
         score += 4
+    
+    #prereq points scoring
     score += prereq_count[course] * 2
 
 print(score)
