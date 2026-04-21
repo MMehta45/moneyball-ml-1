@@ -35,7 +35,7 @@ def create_graph(data):
     return degree_flow
            
 
-data = load_data_from_json('data.json')
+data = load_data_from_json('data_updated2.json')
 sample_graph = create_graph(data)
 
 position = nx.spring_layout(sample_graph)
