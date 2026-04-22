@@ -1,0 +1,48 @@
+{
+  "core_040_language_philosophy_culture": {
+    "hours_required": 3,
+    "courses": [
+      "AMS2300", "AMS2341", "ATCM2300", "ATCM2322", "ATCM2325", "COMM1320",
+      "COMM2314", "FILM1303", "HIST2340", "HIST2341", "HIST2350", "HIST2360",
+      "HIST2370", "HUMA1301", "LIT1301", "LIT2322", "LIT2329", "LIT2331",
+      "PHIL1301", "PHIL1305", "PHIL1306", "PHIL2316", "PHIL2317", "RELS1325"
+    ]
+  },
+  "core_050_creative_arts": {
+    "hours_required": 3,
+    "courses": [
+      "AHST1303", "AHST1304", "AHST2331", "ARTS1301", "ATCM2321", "CRWT2301",
+      "DANC1305", "DANC1310", "FILM2332", "LIT1311", "LIT1315", "MUSI1306",
+      "MUSI2321", "MUSI2322", "PHIL1307", "THEA1310"
+    ]
+  },
+  "core_060_american_history": {
+    "hours_required": 6,
+    "courses": [
+      "HIST1301", "HIST1302", "HIST2301", "HIST2330", "HIST2381", "HIST2384"
+    ]
+  },
+  "core_070_government_political_science": {
+    "hours_required": 6,
+    "courses": [
+      "GOVT2107", "GOVT2305", "GOVT2306"
+    ]
+  },
+  "core_080_social_behavioral_sciences": {
+    "hours_required": 3,
+    "courses": [
+      "BA1310", "BA1320", "CLDP2314", "CRIM1301", "CRIM1307", "ECON2301",
+      "ECON2302", "GEOG2303", "GST2300", "LIT1331", "PA2325", "PSY2301",
+      "PSY2314", "SOC1301", "SOC1306", "SOC2300"
+    ]
+  },
+  "major_technical_electives": {
+    "hours_required": 12,
+    "courses": [
+      "CS4314", "CS4315", "CS4332", "CS4334", "CS4336", "CS4339", "CS4352",
+      "CS4361", "CS4365", "CS4375", "CS4376", "CS4386", "CS4389", "CS4390",
+      "CS4391", "CS4392", "CS4393", "CS4394", "CS4395", "CS4396", "CS4397",
+      "CS4398", "CS4399", "CS4459", "EE4325", "SE4351", "SE4352", "SE4367", "SE4381"
+    ]
+  }
+}

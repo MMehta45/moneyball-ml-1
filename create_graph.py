@@ -29,7 +29,16 @@ def create_graph(data):
     for course in data:
         info = data[course]
         difficulty = info.get("difficulty_score", info.get("difficulty_Score"))
-        degree_flow.add_node(course, name=info['name'], credit_hours=info['credit_hours'], is_transferable=info['is_transferable'],difficulty=difficulty, expected_gpa=info["expected_gpa"])        
+        degree_flow.add_node(
+                             course, 
+                             name=info['name'], 
+                             credit_hours=info['credit_hours'], 
+                             prereqs = info['prereqs'],
+                             is_transferable=info['is_transferable'],
+                             availability=info['availability'],
+                             difficulty=difficulty, 
+                             expected_gpa=info["expected_gpa"]
+        )        
         for prereq_course in info["prereqs"]:
            degree_flow.add_edge(prereq_course, course)
     return degree_flow
