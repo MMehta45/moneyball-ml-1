@@ -86,7 +86,7 @@ if __name__ == "__main__":
        
         score = evaluate(candidate, G, requirements)
         
-        if score != DEATH_PENALTY:
+        if score == 1: # changed from !=DEATH_PENALTY to ==1
             print(f" VALID SCHEDULE FOUND on attempt {attempts}")
             for i, sem in enumerate(candidate):
                 term = "Fall" if i % 2 == 0 else "Spring"

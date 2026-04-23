@@ -75,7 +75,7 @@ def evaluate(individual, G, requirements):
     #         return DEATH_PENALTY
         
 
-    
+    return 1
 
         
 
