@@ -2,6 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import json
 
+
 def load_data_from_json(file_path):
     with open(file_path, 'r') as file:
         json_data = json.load(file)
@@ -47,11 +48,11 @@ def create_graph(data):
 data = load_data_from_json('data_updated2.json')
 sample_graph = create_graph(data)
 
-position = nx.spring_layout(sample_graph)
-nx.draw_networkx_nodes(sample_graph, position, node_color='lightblue', node_size=2000)
-nx.draw_networkx_edges(sample_graph, position, arrowstyle='->', arrowsize=20)
-nx.draw_networkx_labels(sample_graph, position, font_size=10, font_weight='bold')
+# position = nx.spring_layout(sample_graph)
+# nx.draw_networkx_nodes(sample_graph, position, node_color='lightblue', node_size=2000)
+# nx.draw_networkx_edges(sample_graph, position, arrowstyle='->', arrowsize=20)
+# nx.draw_networkx_labels(sample_graph, position, font_size=10, font_weight='bold')
 
-plt.title("Degree Plan Graph")
-plt.axis('off')
-plt.show()
+# plt.title("Degree Plan Graph")
+# plt.axis('off')
+# plt.show()

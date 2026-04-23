@@ -8,7 +8,7 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_score": 1.18,
+        "difficulty_Score": 1.18,
         "expected_gpa": 2.82
         
     },
@@ -120,7 +120,7 @@
         "expected_gpa": 2.96
         
     },
-    "CS2336(Java)": {
+    "CS2336": {
         "name": "Computer Science II",
         "credit_hours": 3,
         "prereqs": [
@@ -475,8 +475,8 @@
             "Spring"
         ],
         "difficulty_Score": 0.757,
-        "expected_gpa": 3.243,
-        "difficulty_score": 0.757
+        "expected_gpa": 3.243
+        
     },
     "CS4352": {
         "name": "Introduction to Human-Computer Interaction",
@@ -738,7 +738,7 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_score": 0.7,
+        "difficulty_Score": 0.7,
         "expected_gpa": 3.1
     },
     "CS4459": {
