@@ -6,7 +6,7 @@ class Tracker:
         self.history = set()
         self.total_hours = 0
         self.core_totals = {key: 0 for key in requirements}
-        self.semester_difficulty = 0
+        self.semester_difficulty = []
 
 def update_core_totals(course_id, tracker, requirements, graph):
     for core_category, info in requirements.items():
@@ -23,10 +23,13 @@ def evaluate(individual, G, requirements):
     for i, semester in enumerate(individual):
         sem_hours = 0
         sem_difficulty = 0
-        sem_course_counter = 0
 
         # Looping courses in a semester
         for course_id in semester:
+
+            # Invalid course id check:
+            if course_id not in G.nodes:
+                return DEATH_PENALTY
 
             # checking if course is already in history
             if course_id in tracker.history:
@@ -34,13 +37,13 @@ def evaluate(individual, G, requirements):
 
             data = G.nodes[course_id]
 
-            # 1. Prerequisite check
+            # Prerequisite check
             prereqs = data["prereqs"]
             for prereq in prereqs:
                 if prereq not in tracker.history:
                     return DEATH_PENALTY
                 
-            # 2. Availability check
+            # Availability check
             term = "Fall" if i % 2 == 0 else "Spring"
             if term not in data["availability"]:
                 return DEATH_PENALTY
@@ -48,7 +51,6 @@ def evaluate(individual, G, requirements):
             # Update trackers in the loop
             sem_hours += data["credit_hours"]
             sem_difficulty += data["difficulty"]
-            sem_course_counter += 1
 
             # access the tracker class and accounts for requirements.json
             update_core_totals(course_id, tracker, requirements, G)
@@ -60,7 +62,7 @@ def evaluate(individual, G, requirements):
         # Update the tracker class
         tracker.total_hours += sem_hours
         tracker.history.update(semester)
-        tracker.semester_difficulty += round(sem_difficulty / sem_course_counter, 2) if sem_course_counter > 0 else 0  
+        tracker.semester_difficulty.append(sem_difficulty)
 
     
     # Checking for total hours requirement (120)
@@ -73,7 +75,6 @@ def evaluate(individual, G, requirements):
             return DEATH_PENALTY
         
 
-    # 
     return (0,) # placeholder value
 
         
