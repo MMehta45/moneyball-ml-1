@@ -66,7 +66,7 @@ def evaluate(individual, G, requirements):
 
     
     # Checking for total hours requirement (120)
-    if tracker.total_hours < 0:
+    if tracker.total_hours < 120:
         return DEATH_PENALTY
     
     # Checking Degree Audit
@@ -75,7 +75,7 @@ def evaluate(individual, G, requirements):
     #         return DEATH_PENALTY
         
 
-    return 1
+    return (1,)
 
         
 
