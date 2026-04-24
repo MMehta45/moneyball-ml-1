@@ -38,10 +38,10 @@ def evaluate(individual, G, requirements):
             data = G.nodes[course_id]
 
             # Prerequisite check
-            # prereqs = data["prereqs"]
-            # for prereq in prereqs:
-            #     if prereq not in tracker.history:
-            #         return DEATH_PENALTY
+            prereqs = data["prereqs"]
+            for prereq in prereqs:
+                if prereq not in tracker.history:
+                    return DEATH_PENALTY
                 
             # Availability check
             term = "Fall" if i % 2 == 0 else "Spring"
@@ -70,9 +70,9 @@ def evaluate(individual, G, requirements):
         return DEATH_PENALTY
     
     # Checking Degree Audit
-    # for core_category, info in requirements.items():
-    #     if tracker.core_totals[core_category] < info["hours_required"]:
-    #         return DEATH_PENALTY
+    for core_category, info in requirements.items():
+        if tracker.core_totals[core_category] < info["hours_required"]:
+            return DEATH_PENALTY
         
 
     return (1,)
