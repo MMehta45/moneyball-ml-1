@@ -4,7 +4,7 @@ import json
 from evaluate import evaluate, DEATH_PENALTY
 
 
-def generate_individual(G, max_semesters=12, max_hours=19):
+def generate_individual(G, max_semesters=8, max_hours=19):
     individual = []
     history = set()
     remaining_nodes = set(G.nodes())
