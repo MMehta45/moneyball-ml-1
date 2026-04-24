@@ -5,6 +5,9 @@ class Tracker:
     def __init__(self, requirements):
         self.history = set()
         self.total_hours = 0
+        self.utd_hours = 0
+        self.total_cost = 0
+        self.total_gpa_points = 0
         self.core_totals = {key: 0 for key in requirements}
         self.semester_difficulty = []
 
@@ -26,17 +29,20 @@ def evaluate(individual, G, requirements):
 
         # Looping courses in a semester
         for course_id in semester:
-
+            
+            parts = course_id.split('_')
+            base_id = parts[0]
+            location = parts[1] if len(parts) > 1 else 'U'
             # Invalid course id check:
-            if course_id not in G.nodes:
+            if base_id not in G.nodes:
                 return DEATH_PENALTY
 
             # checking if course is already in history
             if course_id in tracker.history:
                 return DEATH_PENALTY
 
-            data = G.nodes[course_id]
-
+            data = G.nodes[base_id]
+            credits = data.get("credit_hours", 0)
             # Prerequisite check
             prereqs = data["prereqs"]
             for prereq in prereqs:
@@ -46,14 +52,20 @@ def evaluate(individual, G, requirements):
             # Availability check
             term = "Fall" if i % 2 == 0 else "Spring"
             if term not in data["availability"]:
-                return DEATH_PENALTY
+                return DEATH_PENALTY 
+            if location == 'C':
+                tracker.total_cost += (credits * 60) # Collin: $60/hr
+            else: # Location is 'U'
+                tracker.total_cost += (credits * 1000) # UTD: $1,000/hr
+                tracker.total_gpa_points += (data.get("expected_gpa", 4.0) * credits) 
+                tracker.utd_hours += credits 
             
             # Update trackers in the loop
             sem_hours += data["credit_hours"]
             sem_difficulty += data["difficulty"]
 
             # access the tracker class and accounts for requirements.json
-            update_core_totals(course_id, tracker, requirements, G)
+            update_core_totals(base_id, tracker, requirements, G)
 
         # 3. Semester Load/Credit Hours (max 19)
         if sem_hours > 19:
