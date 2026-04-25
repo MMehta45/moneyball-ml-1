@@ -46,8 +46,18 @@ def evaluate(individual, G, requirements):
             # Prerequisite check
             prereqs = data["prereqs"]
             for prereq in prereqs:
-                if prereq not in tracker.history:
-                    return DEATH_PENALTY
+                # if prereq not in tracker.history:
+                #     return DEATH_PENALTY
+                if not prereq or prereq.strip() == "":
+                    continue
+
+                if "/" in prereq:
+                    options = [opt.strip() for opt in prereq.split("/")]
+                    if not any(opt in tracker.history for opt in options):
+                        return DEATH_PENALTY
+                else:
+                    if prereq not in tracker.history:
+                        return DEATH_PENALTY
                 
             # Availability check
             term = "Fall" if i % 2 == 0 else "Spring"
@@ -73,7 +83,12 @@ def evaluate(individual, G, requirements):
         
         # Update the tracker class
         tracker.total_hours += sem_hours
-        tracker.history.update(semester)
+
+        #tracker.history.update(semester)
+        for course_id in semester:
+            base_id = course_id.split('_')[0]
+            tracker.history.add(course_id)
+
         tracker.semester_difficulty.append(sem_difficulty)
 
     
@@ -90,8 +105,3 @@ def evaluate(individual, G, requirements):
     return (1,)
 
         
-
-
-
-
-
