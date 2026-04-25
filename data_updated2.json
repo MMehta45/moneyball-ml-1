@@ -87,7 +87,7 @@
         "expected_gpa": 2.41
         
     },
-    "PHYS2325/2125": {
+    "PHYS2325+2125": {
         "name": "Mechanics/Physics Laboratory I",
         "credit_hours": 4,
         "prereqs": [
@@ -152,11 +152,12 @@
         "difficulty_Score": 1.15,
         "expected_gpa": 2.85
     },
-    "PHYS2326/2126": {
+    "PHYS2326+2126": {
         "name": "Electromagnetism and Waves/Physics II Laboratory",
         "credit_hours": 4,
         "prereqs": [
-            "MATH2413/MATH2417"
+            "MATH2413/MATH2417",
+            "PHYS2325+2125"
         ],
         "is_transferable": true,
         "availability": [
@@ -273,7 +274,7 @@
         "name": "Digital Logic and Computer Design/Digital Systems Laboratory",
         "credit_hours": 4,
         "prereqs": [
-            "PHYS2326/2126",
+            "PHYS2326+2126",
             "CS2340"
         ],
         "is_transferable": false,

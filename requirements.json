@@ -23,9 +23,10 @@
     ]
   },
   "core_070_government_political_science": {
-    "hours_required": 6,
+    "hours_required": 3,
+    "notes": "GOVT 2305 is mandatory in the checklist hence the reduction in hours",
     "courses": [
-      "GOVT2107", "GOVT2305", "GOVT2306"
+      "GOVT2306"
     ]
   },
   "core_080_social_behavioral_sciences": {
@@ -43,6 +44,16 @@
       "CS4361", "CS4365", "CS4375", "CS4376", "CS4386", "CS4389", "CS4390",
       "CS4391", "CS4392", "CS4393", "CS4394", "CS4395", "CS4396", "CS4397",
       "CS4398", "CS4399", "CS4459", "EE4325", "SE4351", "SE4352", "SE4367", "SE4381"
+    ]
+  },
+  "mandatory_exact_matches": {
+    "notes": "These courses are mandatory and must be taken to fulfill the degree requirements.",
+    "courses": [
+      "ECS1100", "CS1200", "CS1436", "CS1337", "CS2305", "CS2336", "CS2340",
+      "MATH2413", "MATH2414", "MATH2418", "PHYS2325+2125", "PHYS2326+2126", 
+      "RHET1302", "GOVT2305", "CS3162", "CS3341", "CS3345", "CS3354", 
+      "CS3377", "ECS2390", "CS4141", "CS4337", "CS4341", "CS4347", 
+      "CS4348", "CS4349", "CS4384", "CS4485"
     ]
   }
 }
