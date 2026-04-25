@@ -92,6 +92,13 @@ def evaluate(individual, G, requirements):
         tracker.semester_difficulty.append(sem_difficulty)
 
     
+    # Normalizing the data
+    projected_gpa = tracker.total_gpa_points / tracker.utd_hours if tracker.utd_hours > 0 else 0
+    normalized_gpa = projected_gpa / 4.0 * 100
+
+    MAX_POSSIBLE_COST = 120 * 1000 # 120 hours at utd prices
+    normalized_cost = ( (MAX_POSSIBLE_COST - tracker.total_cost) / MAX_POSSIBLE_COST ) * 100
+
     # Checking for total hours requirement (120)
     if tracker.total_hours < 120:
         return DEATH_PENALTY
@@ -101,7 +108,23 @@ def evaluate(individual, G, requirements):
         if tracker.core_totals[core_category] < info["hours_required"]:
             return DEATH_PENALTY
         
+    missing_class_penalty = 0
+    for category, info in requirements.items():
+        # Penalty for missing a mandatory course
+        if category == "mandatory_exact_matches":
+            for course in info["courses"]:
+                if course not in tracker.history:
+                    missing_class_penalty += 50000 
+                elif tracker.core_totals[category] < info["hours_required"]:
+                        missing_class_penalty += 50000
 
-    return (1,)
+    base_score = 100000
+    final_score = base_score - missing_class_penalty
+
+    if final_score > 0:
+        final_score += normalized_gpa * 500  # GPA is weighted more heavily
+        final_score += normalized_cost * 500     # Cost is weighted less heavily
+             
+    return (final_score,)
 
         
