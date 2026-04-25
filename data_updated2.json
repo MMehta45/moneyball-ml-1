@@ -8,7 +8,7 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_score": 1.18,
+        "difficulty_Score": 1.18,
         "expected_gpa": 2.82
         
     },
@@ -475,8 +475,8 @@
             "Spring"
         ],
         "difficulty_Score": 0.757,
-        "expected_gpa": 3.243,
-        "difficulty_score": 0.757
+        "expected_gpa": 3.243
+        
     },
     "CS4352": {
         "name": "Introduction to Human-Computer Interaction",
@@ -726,7 +726,7 @@
         "expected_gpa": 3.128
         
     },
-    "CS4399/NotComplete": {
+    "CS4399": {
         "name": "Senior Honors in Computer Science",
         "credit_hours": 3,
         "prereqs": [
@@ -738,7 +738,7 @@
             "Fall",
             "Spring"
         ],
-        "difficulty_score": 0.7,
+        "difficulty_Score": 0.7,
         "expected_gpa": 3.1
     },
     "CS4459": {
