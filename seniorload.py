@@ -14,15 +14,17 @@ schedule = [["CS1436", "MATH2413", "ECS1100"],
 
 score = 0
 
-#assuming indexing starts at 0
+def senior_load_reduction(schedule, data, score):
+    #assuming indexing starts at 0
+    for course in schedule[6]:
+        if data[course]["difficulty_Score"] > 0.85:
+            #this is weighted solution but can also just subtract 8 if hard
+            score -= round(data[course]["difficulty_Score"] * 8)
+    for course in schedule[7]:
+        if data[course]["difficulty_Score"] > 0.85:
+            score -= round(data[course]["difficulty_Score"] * 8)
+    return score
 
-for course in schedule[6]:
-    if data[course]["difficulty_Score"] > 0.85:
-        #this is weighted solution but can also just subtract 8 if hard
-        score += round(data[course]["difficulty_Score"] * 8)
-for course in schedule[7]:
-    if data[course]["difficulty_Score"] > 0.85:
-        score += round(data[course]["difficulty_Score"] * 8)
-
+score = senior_load_reduction(schedule, data, score)
 print(score)
     

@@ -14,30 +14,35 @@ schedule = [["CS1436", "MATH2413", "ECS1100"],
             ["CS4485"]]
 
 score = 0
-prereq_count = {}
 
-for courses in data:
-    for prereq in data[courses]["prereqs"]:
-        prereq_count[prereq] = 1 + prereq_count.get(prereq, 0)
+def build_prereq_dict(data):
+    prereq_count = {}
+
+    for courses in data:
+        for prereq in data[courses]["prereqs"]:
+            prereq_count[prereq] = 1 + prereq_count.get(prereq, 0)
     
-#with open("output.txt", "w") as f:
-    #for prereq, count in prereq_count.items():
-        #print(f"{prereq}: {count}", file=f)
+    return prereq_count
+    
+def calculate_prereq_points(schedule, data, prereq_count, score):
+    #global score
+    #for schedule in schedules:
+    for i, semester in enumerate(schedule):
+        for course in semester:
+            #sequential proximity scoring
+            #are any of the prereqs taken in the semester before
+            if i != 0:
+                prev_sem = set(schedule[i-1])
+                prereqs = set(data[course]["prereqs"])
+                matches = len(prev_sem and prereqs)
+                score += matches * 4
+            
+            #prereq points scoring
+            if course in prereq_count:
+                score += prereq_count[course] * 2
+    return score
 
-#for schedule in schedules:
-for i, semester in enumerate(schedule):
-    for course in semester:
-        #sequential proximity scoring
-        #are any of the prereqs taken in the semester before
-        if i != 0:
-            prev_sem = set(schedule[i-1])
-            prereqs = set(data[course]["prereqs"])
-            matches = len(prev_sem and prereqs)
-            score += matches * 4
-        
-        #prereq points scoring
-        if course in prereq_count:
-            score += prereq_count[course] * 2
+prereqs = build_prereq_dict(data)
+score = calculate_prereq_points(schedule, data, prereqs, score)
 print(score)
-
 
