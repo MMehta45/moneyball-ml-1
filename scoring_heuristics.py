@@ -1,5 +1,24 @@
 import json
 
+# Difficulty Classification Thresholds
+# easy     : difficulty_Score < 0.75
+# moderate : 0.75 <= difficulty_Score <= 0.85  
+# hard     : difficulty_Score > 0.85
+
+DIFFICULTY_EASY_MAX = 0.75
+DIFFICULTY_HARD_MIN = 0.85
+DIFFICULTY_AVERAGE  = 0.80   # representative midpoint of the moderate band
+
+def classify_difficulty(score: float) -> str:
+    """Return a human-readable difficulty label for a given difficulty_Score."""
+    if score < DIFFICULTY_EASY_MAX:
+        return "easy"
+    elif score > DIFFICULTY_HARD_MIN:
+        return "hard"
+    else:
+        return "moderate"   # 0.75 - 0.85
+
+
 # Data Loading (reused from create_graph.py)
 def load_data_from_json(file_path):
     with open(file_path, 'r') as file:
@@ -14,6 +33,7 @@ def load_data_from_json(file_path):
                 "is_transferable": course["is_transferable"],
                 "availability": course["availability"],
                 "difficulty_Score": difficulty,
+                "difficulty_label": classify_difficulty(difficulty) if difficulty is not None else "unknown",
                 "expected_gpa": course["expected_gpa"]
             }
         return data
@@ -23,7 +43,7 @@ def load_data_from_json(file_path):
 # Internship Readiness
 INTERNSHIP_CRITICAL_COURSES = {
     "CS3345", # Data Structures & Algorithm Analysis
-    "CS2336", # Computer Science II (key OOP course)
+    "CS2336", # Computer Science II 
     "CS3354", # Software Engineering
     "CS4348", # Operating Systems
     "CS4347", # Database Systems
@@ -34,7 +54,7 @@ JUNIOR_YEAR_END_SEMESTER = 6   # semesters 5-6 = junior year in an 8-sem plan
 
 def check_internship_readiness(semester_plan: dict) -> dict:
    
-    # Build a lookup: course_id → earliest semester it appears in the plan
+    # Build a lookup: course_id -> earliest semester it appears in the plan
     completion_map = {}
     for sem, courses in semester_plan.items():
         for cid in courses:
@@ -56,13 +76,13 @@ def check_internship_readiness(semester_plan: dict) -> dict:
     if earned:
         explanation = (
             " Internship Readiness: +6 points\n"
-            " All internship-critical courses are completed by the end of "
+            " All internship critical courses are completed by the end of "
             f"semester {JUNIOR_YEAR_END_SEMESTER} (junior year)."
         )
     else:
         explanation = (
             " Internship Readiness: +0 points\n"
-            f" The following internship-critical courses are NOT completed "
+            f" The following internship critical courses are NOT completed "
             f"by semester {JUNIOR_YEAR_END_SEMESTER}:\n"
             + "\n".join(f"     - {c} (completed in semester {completed_by[c] or 'never'})"
                         for c in missing)
@@ -80,30 +100,12 @@ def check_internship_readiness(semester_plan: dict) -> dict:
 
 # Freshman Buffer
 
-HEAVY_THRESHOLD   = 1.0   # difficulty_Score strictly above this → "heavy"
-HEAVY_COUNT_LIMIT = 2     # must have FEWER than this many heavy courses
+HEAVY_THRESHOLD   = DIFFICULTY_HARD_MIN  # difficulty_Score strictly above 0.85 -> "hard/heavy"
+HEAVY_COUNT_LIMIT = 3                    # must have FEWER than this many heavy courses
 
 FRESHMAN_SEMESTERS = [1, 2]
 
 def check_freshman_buffer(semester_plan: dict, course_data: dict) -> dict:
-    """
-    Parameters
-    ----------
-    semester_plan : dict
-        Keys   → semester number (int, 1-8)
-        Values → list of course ID strings taken that semester
-    course_data   : dict
-        Full course catalog returned by load_data_from_json()
-
-    Returns
-    -------
-    dict with keys:
-        score           int   (+6 or 0)
-        earned          bool
-        heavy_courses   list  of (course_id, name, difficulty) that are heavy
-        total_heavy     int
-        explanation     str
-    """
     heavy_courses = []
 
     for sem in FRESHMAN_SEMESTERS:
@@ -111,28 +113,31 @@ def check_freshman_buffer(semester_plan: dict, course_data: dict) -> dict:
         for cid in courses_this_sem:
             info = course_data.get(cid)
             if info is None:
-                continue  # unknown course – skip
+                continue  
             diff = info["difficulty_Score"]
             if diff > HEAVY_THRESHOLD:
                 heavy_courses.append((cid, info["name"], diff, sem))
 
     total_heavy = len(heavy_courses)
-    earned = total_heavy < HEAVY_COUNT_LIMIT
+    earned = total_heavy <= HEAVY_COUNT_LIMIT
     score  = 6 if earned else 0
 
     if earned:
         explanation = (
             f" Freshman Buffer: +6 points\n"
-            f" Only {total_heavy} heavy course(s) (difficulty > {HEAVY_THRESHOLD}) "
-            f"detected in freshman year — below the limit of {HEAVY_COUNT_LIMIT}."
+            f" Only {total_heavy} hard course(s) (difficulty > {HEAVY_THRESHOLD}, i.e. 'hard') "
+            f"detected in freshman year — below the limit of {HEAVY_COUNT_LIMIT}.\n"
+            f" Difficulty scale: easy < {DIFFICULTY_EASY_MAX} | "
+            f"moderate {DIFFICULTY_EASY_MAX}–{DIFFICULTY_HARD_MIN} (avg ≈ {DIFFICULTY_AVERAGE}) | "
+            f"hard > {DIFFICULTY_HARD_MIN}"
         )
     else:
         explanation = (
             f" Freshman Buffer: +0 points\n"
-            f"  {total_heavy} heavy course(s) found in freshman year "
-            f"(limit is < {HEAVY_COUNT_LIMIT}):\n"
+            f"  {total_heavy} hard course(s) found in freshman year \n"
             + "\n".join(
-                f"     - Sem {sem}: {cid} — {name} (difficulty {diff:.3f})"
+                f"     - Sem {sem}: {cid} — {name} "
+                f"(difficulty {diff:.3f} -> {classify_difficulty(diff)})"
                 for cid, name, diff, sem in heavy_courses
             )
         )
@@ -146,44 +151,28 @@ def check_freshman_buffer(semester_plan: dict, course_data: dict) -> dict:
     }
 
 # Combined scorer
-
-
 def evaluate_plan(semester_plan: dict, course_data: dict) -> dict:
-    """
-    Run both heuristics and return a combined result.
-
-    Parameters
-    ----------
-    semester_plan : dict   {semester_number (int): [course_id, ...]}
-    course_data   : dict   full catalog from load_data_from_json()
-
-    Returns
-    -------
-    dict with per-heuristic results and a total_score field
-    """
+    
     internship = check_internship_readiness(semester_plan)
     freshman   = check_freshman_buffer(semester_plan, course_data)
 
     total = internship["score"] + freshman["score"]
 
-    print("=" * 60)
-    print("  DEGREE PLAN HEURISTIC EVALUATION")
-    print("=" * 60)
+    print()
+    print("---- DEGREE PLAN HEURISTIC EVALUATION ----")
     print()
     print(internship["explanation"])
     print()
     print(freshman["explanation"])
     print()
-    print(f"  TOTAL SCORE FROM THESE TWO HEURISTICS: {total} / 12")
-    print("=" * 60)
+    print(f"---- TOTAL SCORE FROM THESE TWO HEURISTICS: {total} / 12 ----")
+    print()
 
     return {
         "internship_readiness": internship,
         "freshman_buffer":      freshman,
         "total_score":          total,
     }
-
-
 
 # Demo / quick test
 if __name__ == "__main__":
@@ -201,8 +190,8 @@ if __name__ == "__main__":
         4: ["CS2340", "PHYS2326/2126", "MATH2418", "ECS2390"],
 
         # Junior Year
-        5: ["CS3345", "CS3341", "CS3354", "CS3377"],
-        6: ["CS4348", "CS4347", "CS4349", "CS4337"],   # all internship-critical done by sem 6 
+        5: ["CS3345","CS3341", "CS3354", "CS3377"],
+        6: ["CS4348", "CS4347", "CS4349", "CS4337"],   # all internship critical done by sem 6 
 
         # Senior Year
         7: ["CS4341/4141", "CS4384", "CS4375", "CS3162"],
