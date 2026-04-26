@@ -87,7 +87,7 @@ def evaluate(individual, G, requirements):
         #tracker.history.update(semester)
         for course_id in semester:
             base_id = course_id.split('_')[0]
-            tracker.history.add(course_id)
+            tracker.history.add(base_id)
 
         tracker.semester_difficulty.append(sem_difficulty)
 
