@@ -35,11 +35,17 @@ def evaluate(individual, G, requirements):
             location = parts[1] if len(parts) > 1 else 'U'
             # Invalid course id check:
             if base_id not in G.nodes:
-                return DEATH_PENALTY
+                return (DEATH_PENALTY,)
 
             # checking if course is already in history
-            if base_id in tracker.history: # changed from course_id to base_id
-                return DEATH_PENALTY
+            # if base_id in tracker.history: # changed from course_id to base_id
+            #     return (DEATH_PENALTY,)
+            seen_this_sem = set()
+            for course_id in semester:
+                base_id = course_id.split('_')[0]
+                if base_id in seen_this_sem:
+                    return (DEATH_PENALTY,)
+                seen_this_sem.add(base_id)
 
             data = G.nodes[base_id]
             credits = data.get("credit_hours", 0)
@@ -53,16 +59,16 @@ def evaluate(individual, G, requirements):
 
                 if "/" in prereq:
                     options = [opt.strip() for opt in prereq.split("/")]
-                    if not any(opt in tracker.history for opt in options):
-                        return DEATH_PENALTY
+                    if not any(opt in tracker.history or opt not in G.nodes for opt in options):
+                        return (DEATH_PENALTY,)
                 else:
                     if prereq not in tracker.history:
-                        return DEATH_PENALTY
+                        return (DEATH_PENALTY,)
                 
             # Availability check
             term = "Fall" if i % 2 == 0 else "Spring"
             if term not in data["availability"]:
-                return DEATH_PENALTY 
+                return (DEATH_PENALTY,)
             if location == 'C':
                 tracker.total_cost += (credits * 60) # Collin: $60/hr
             else: # Location is 'U'
@@ -79,7 +85,7 @@ def evaluate(individual, G, requirements):
 
         # 3. Semester Load/Credit Hours (max 19)
         if sem_hours > 19:
-            return DEATH_PENALTY
+            return (DEATH_PENALTY,)
         
         # Update the tracker class
         tracker.total_hours += sem_hours
@@ -101,12 +107,12 @@ def evaluate(individual, G, requirements):
 
     # Checking for total hours requirement (120)
     if tracker.total_hours < 120:
-        return DEATH_PENALTY
+        return (DEATH_PENALTY,)
     
     # Checking Degree Audit
     for core_category, info in requirements.items():
         if tracker.core_totals[core_category] < info["hours_required"]:
-            return DEATH_PENALTY
+            return (DEATH_PENALTY,)
         
     missing_class_penalty = 0
     for category, info in requirements.items():
@@ -115,7 +121,7 @@ def evaluate(individual, G, requirements):
             for course in info["courses"]:
                 if course not in tracker.history:
                     missing_class_penalty += 50000 
-                elif tracker.core_totals[category] < info["hours_required"]:
+                if tracker.core_totals[category] < info["hours_required"]:
                         missing_class_penalty += 50000
 
     base_score = 100000
