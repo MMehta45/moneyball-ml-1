@@ -38,7 +38,7 @@ def evaluate(individual, G, requirements):
                 return DEATH_PENALTY
 
             # checking if course is already in history
-            if course_id in tracker.history:
+            if base_id in tracker.history: # changed from course_id to base_id
                 return DEATH_PENALTY
 
             data = G.nodes[base_id]

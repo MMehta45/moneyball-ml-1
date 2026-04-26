@@ -45,7 +45,7 @@ def generate_individual(G, max_semesters=8, max_hours=19):
         for course_id in candidates:
             course_hours = G.nodes[course_id].get("credit_hours", 0)
             if sem_hours + course_hours <= max_hours:
-                is_transferable = G.nodes[course_id].get("transferable", False)
+                is_transferable = G.nodes[course_id].get("is_transferable", False)
                 suffix = random.choice(["_U", "_C"]) if is_transferable else "_U"
                 semester.append(f"{course_id}{suffix}")
                 sem_hours += course_hours
@@ -70,7 +70,8 @@ def setup_toolbox(G, requirements):
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
    
-    toolbox.register("evaluate", lambda ind: (evaluate(ind, G, requirements),))
+    #toolbox.register("evaluate", lambda ind: (evaluate(ind, G, requirements),))
+    toolbox.register("evaluate", lambda ind: evaluate(ind, G, requirements))
 
    
     toolbox.register("mate", tools.cxTwoPoint)
