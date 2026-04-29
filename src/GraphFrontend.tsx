@@ -11,6 +11,8 @@ import ReactFlow, {
   Position,
   Handle,
   MarkerType,
+  Background,
+  BackgroundVariant,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import data from '../data_updated2.json';
@@ -25,9 +27,9 @@ const formatCourseCode = (courseCode: string) => courseCode.replace(/([A-Z]+)(\d
 
 // Helper to determine difficulty color
 const getDifficultyColor = (score: number): string => {
-  if (score < 0.75) return '#22c55e'; // Green for easy
-  if (score > 0.85) return '#ef4444'; // Yellow for medium
-  return '#eab308'; // Red for hard
+  if (score < 0.75) return '#189245'; // Green for easy
+  if (score > 0.85) return '#cb3b3b'; // Yellow for medium
+  return '#d4a20a'; // Red for hard
 };
 
 // Custom node with handles on left/right sides
@@ -41,17 +43,17 @@ const CourseNode: React.FC<{ data: any }> = ({ data }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        fontFamily: 'system-ui, -apple-system, sans-serif',
-        fontSize: '18px',
+        fontFamily: 'Space Mono, monospace',
+        fontSize: '19px',
         fontWeight: 'bold',
       }}
     >
       <Handle type="target" position={Position.Left} />
       <div>{data.label}</div>
-      <div style={{ fontSize: '15px', marginTop: '4px', color: '#f8fafc', fontWeight: 'bold' }}>
+      <div style={{ fontSize: '14px', marginTop: '4px', color: '#f8fafc', fontWeight: 'bold', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
         Difficulty: {data.difficulty?.toFixed(2)}
       </div>
-      <div style={{ fontSize: '13px', marginTop: '4px', color: '#f8fafc', fontWeight: 'bold' }}>
+      <div style={{ fontSize: '13px', marginTop: '4px', color: '#f8fafc', fontWeight: 'bold', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
         Campus
       </div>
       <Handle type="source" position={Position.Right} />
@@ -117,20 +119,20 @@ const GraphFrontend: React.FC = () => {
         draggable: false,
         selectable: false,
         style: {
-          width: nodeWidth,
-          height: 80,
+          width: nodeWidth + 10,
+          height: 85,
           borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
           padding: 8,
-          backgroundColor: '#1f2937',
+          backgroundColor: '#183f27',
           color: '#e5e7eb',
-          border: '2px solid #4f46e5',
-          fontSize: '16px',
+          border: '0px solid #4f46e5',
+          fontSize: '18px',
           fontWeight: 'bold',
-          fontFamily: 'system-ui, -apple-system, sans-serif',
+          fontFamily: 'Space Mono, monospace',
           whiteSpace: 'pre-line',
         },
       });
@@ -182,11 +184,11 @@ const GraphFrontend: React.FC = () => {
                       target: courseCode,
                       markerEnd: {
                         type: MarkerType.ArrowClosed,
-                        color: '#13d0f1',
+                        color: '#e9690e',
                       },
                       animated: true,
                       style: {
-                        stroke: '#13d0f1',
+                        stroke: '#e9690e',
                         strokeWidth: 2,
                       },
                     });
@@ -216,8 +218,9 @@ const GraphFrontend: React.FC = () => {
           borderRadius: '8px',
           border: 'none',
           cursor: 'pointer',
-          backgroundColor: darkMode ? '#e5e7eb' : '#1f2937',
+          backgroundColor: darkMode ? '#e9690e' : '#183f27',
           color: darkMode ? '#1f2937' : '#e5e7eb',
+          fontFamily: 'Space Mono, monospace',
           fontWeight: 'bold',
         }}
       >
@@ -229,13 +232,55 @@ const GraphFrontend: React.FC = () => {
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 10,
-        color: darkMode ? '#ffffff' : '#1f2937',
-        fontFamily: 'system-ui, -apple-system, sans-serif',
-        fontSize: '30px',
+        color: darkMode ? '#e9690e' : '#e9690e',
+        fontFamily: 'Space Mono, monospace',
+        fontSize: '40px',
         fontWeight: 'bold',
         pointerEvents: 'none',
       }}>
         Your Four Year Plan
+      </div>
+      <div style={{
+        position: 'absolute',
+        bottom: 24,
+        right: 24,
+        zIndex: 10,
+        backgroundColor: darkMode ? 'rgba(31, 41, 55, 0.9)' : 'rgba(229, 231, 235, 0.9)',
+        border: `1px solid ${darkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'}`,
+        borderRadius: '8px',
+        padding: '16px',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
+        fontSize: '12px',
+        color: darkMode ? '#e5e7eb' : '#1f2937',
+      }}>
+        <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>Difficulty</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <div style={{
+            width: '16px',
+            height: '16px',
+            borderRadius: '50%',
+            backgroundColor: '#189245',
+          }} />
+          <span>Easy (&lt; 0.75)</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <div style={{
+            width: '16px',
+            height: '16px',
+            borderRadius: '50%',
+            backgroundColor: '#d4a20a',
+          }} />
+          <span>Average (0.75 - 0.85)</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{
+            width: '16px',
+            height: '16px',
+            borderRadius: '50%',
+            backgroundColor: '#cb3b3b',
+          }} />
+          <span>Hard (&gt; 0.85)</span>
+        </div>
       </div>
       <ReactFlow
         nodes={nodes}
@@ -248,6 +293,7 @@ const GraphFrontend: React.FC = () => {
         fitView
       >
         <Controls />
+        <Background variant={BackgroundVariant.Lines} gap={50} color={darkMode ? "rgba(255,255,255,0.1)" : "rgba(64,64,64,0.1)"} />
       </ReactFlow>
     </div>
   );
