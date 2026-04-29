@@ -1,4 +1,6 @@
 
+import re
+
 DEATH_PENALTY = -10000000
 
 class Tracker:
@@ -15,6 +17,28 @@ def update_core_totals(course_id, tracker, requirements, graph):
     for core_category, info in requirements.items():
         if course_id in info["courses"]:
             tracker.core_totals[core_category] += graph.nodes[course_id]["credit_hours"]
+
+
+def _is_cs_4xxx(course_id):
+    return re.fullmatch(r"CS4\d{3}", course_id) is not None
+
+
+def _prereq_satisfied(prereq, course_base_id, history):
+    prereq = prereq.strip()
+    if not prereq:
+        return True
+
+    if prereq == "CS4XXX":
+        if course_base_id != "CS4485":
+            return False
+        completed_cs4xxx = sum(1 for completed_course in history if _is_cs_4xxx(completed_course))
+        return completed_cs4xxx >= 3
+
+    if "/" in prereq:
+        options = [opt.strip() for opt in prereq.split("/")]
+        return any(opt in history for opt in options)
+
+    return prereq in history
 
 
 def evaluate(individual, G, requirements):
@@ -52,18 +76,8 @@ def evaluate(individual, G, requirements):
             # Prerequisite check
             prereqs = data["prereqs"]
             for prereq in prereqs:
-                # if prereq not in tracker.history:
-                #     return DEATH_PENALTY
-                if not prereq or prereq.strip() == "":
-                    continue
-
-                if "/" in prereq:
-                    options = [opt.strip() for opt in prereq.split("/")]
-                    if not any(opt in tracker.history or opt not in G.nodes for opt in options):
-                        return (DEATH_PENALTY,)
-                else:
-                    if prereq not in tracker.history:
-                        return (DEATH_PENALTY,)
+                if not _prereq_satisfied(prereq, base_id, tracker.history):
+                    return (DEATH_PENALTY,)
                 
             # Availability check
             term = "Fall" if i % 2 == 0 else "Spring"

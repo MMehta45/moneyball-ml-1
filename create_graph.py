@@ -44,8 +44,12 @@ def create_graph(data):
            if "/" in prereq_course:
                 options = [opt.strip() for opt in prereq_course.split("/")]
                 for opt in options:
+                    if opt == "CS4XXX":
+                        continue
                     degree_flow.add_edge(opt, course)
            else:
+               if prereq_course == "CS4XXX":
+                   continue
                degree_flow.add_edge(prereq_course, course)
                
     return degree_flow

@@ -15,11 +15,7 @@
     "MATH2413": {
         "name": "Differential Calculus",
         "credit_hours": 4,
-        "prereqs": [
-            "MATH2312",
-            "MATH2306"
-            
-        ],
+        "prereqs": [],
         "is_transferable": true,
         "availability": [
             "Fall",
@@ -74,8 +70,7 @@
         "name": "Integral Calculus",
         "credit_hours": 4,
         "prereqs": [
-            "MATH2413",
-            "MATH2417"
+            "MATH2413"
         ],
         "is_transferable": true,
         "availability": [
@@ -91,8 +86,8 @@
         "name": "Mechanics/Physics Laboratory I",
         "credit_hours": 4,
         "prereqs": [
-            "MATH2413/MATH2417",
-            "MATH2414/2419"
+            "MATH2413",
+            "MATH2414"
         ],
         "is_transferable": true,
         "availability": [
@@ -108,7 +103,7 @@
         "name": "Discrete Mathematics for Computing I",
         "credit_hours": 3,
         "prereqs": [
-            "MATH2413/MATH2417"
+            "MATH2413"
         ],
         "is_transferable": true,
         "availability": [
@@ -156,7 +151,7 @@
         "name": "Electromagnetism and Waves/Physics II Laboratory",
         "credit_hours": 4,
         "prereqs": [
-            "MATH2413/MATH2417",
+            "MATH2413",
             "PHYS2325+2125"
         ],
         "is_transferable": true,
@@ -173,7 +168,7 @@
         "name": "Linear Algebra",
         "credit_hours": 4,
         "prereqs": [
-            "MATH2413/MATH2417"
+            "MATH2413"
         ],
         "is_transferable": true,
         "availability": [
@@ -205,7 +200,7 @@
         "name": "Probability and Statistics in Computer Science and Software Engineering",
         "credit_hours": 3,
         "prereqs": [
-            "MATH2414/MATH2419",
+            "MATH2414",
             "CS2305",
             "MATH2418"
         ],
@@ -223,7 +218,7 @@
         "name": "Data Structures and Foundation of Algorithmic Analysis",
         "credit_hours": 3,
         "prereqs": [
-            "CS2336/CS2337",
+            "CS2336",
             "CS2305"
         ],
         "is_transferable": false,
@@ -240,7 +235,7 @@
         "name": "Systems Programming in UNIX and Other Environments",
         "credit_hours": 3,
         "prereqs": [
-            "CS2336/CS2337"
+            "CS2336"
         ],
         "is_transferable": false,
         "availability": [
@@ -270,7 +265,7 @@
         "expected_gpa": 3.096
         
     },
-    "CS4341/4141": {
+    "CS4341+4141": {
         "name": "Digital Logic and Computer Design/Digital Systems Laboratory",
         "credit_hours": 4,
         "prereqs": [
@@ -291,7 +286,7 @@
         "name": "Software Engineering",
         "credit_hours": 3,
         "prereqs": [
-            "CS2336/2337",
+            "CS2336",
             "CS2305",
             "ECS2390"
         ],
@@ -446,23 +441,6 @@
         ],
         "difficulty_Score": 0.65,
         "expected_gpa": 3.35
-    },
-    "CS4334": {
-        "name": "Numerical Analysis",
-        "credit_hours": 3,
-        "prereqs": [
-            "CS1337",
-            "MATH2418",
-            "MATH2451/MATH3351"
-        ],
-        "is_transferable": false,
-        "availability": [
-            "Fall",
-            "Spring"
-        ],
-        "difficulty_Score": 1.174,
-        "expected_gpa": 2.826
-        
     },
     "CS4336": {
         "name": "Advanced Java",
@@ -778,7 +756,7 @@
         "credit_hours": 3,
         "prereqs": [
             "SE3306",
-            "3354"
+            "CS3354"
         ],
         "is_transferable": false,
         "availability": [
@@ -794,7 +772,7 @@
         "credit_hours": 3,
         "prereqs": [
             "SE3306",
-            "3354"
+            "CS3354"
         ],
         "is_transferable": false,
         "availability": [
@@ -810,7 +788,7 @@
         "credit_hours": 3,
         "prereqs": [
             "SE3306",
-            "3354"
+            "CS3354"
         ],
         "is_transferable": false,
         "availability": [
@@ -826,7 +804,7 @@
         "credit_hours": 3,
         "prereqs": [
             "SE3306",
-            "3354"
+            "CS3354"
         ],
         "is_transferable": false,
         "availability": [
@@ -841,7 +819,7 @@
         "name": "American Studies for the Twenty-First Century",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -857,7 +835,7 @@
         "name": "Introduction to TechnoCulture",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -868,7 +846,7 @@
         "expected_gpa": 3.1
        
     },
-    "AMS2322": {
+    "ATCM2322": {
         "name": "Media Histories",
         "credit_hours": 3,
         "prereqs": [
@@ -882,11 +860,11 @@
         "difficulty_Score": 0.84,
         "expected_gpa": 3.16
     },
-    "AMS2325": {
+    "ATCM2325": {
         "name": "Introduction to Ethnic Studies",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -900,7 +878,7 @@
         "name": "Interpersonal Communication ",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -914,7 +892,7 @@
         "name": "Oral Interpretation",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -929,7 +907,7 @@
         "name": "Transnational Film and Video",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -945,7 +923,7 @@
         "name": "Middle East Civilizations",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -960,7 +938,7 @@
         "name": "East Asian Civilizations",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -975,7 +953,7 @@
         "name": "Latin American Civilizations",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -990,7 +968,7 @@
         "name": "European Civilizations",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1005,7 +983,7 @@
         "name": "The Holocaust",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1020,7 +998,7 @@
         "name": "Exploration of the Humanities",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1036,7 +1014,7 @@
         "name": "Introduction to Literature",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1052,7 +1030,7 @@
         "name": "Survey of African-American and African Diaspora Literatures",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1067,7 +1045,7 @@
         "name": "Introduction to Ethnic American Literature",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1082,7 +1060,7 @@
         "name": "Introduction to World Literature",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1098,7 +1076,7 @@
         "name": " Introduction to Philosophy",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1114,7 +1092,7 @@
         "name": "Introduction to Philosophy of Religion",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1128,7 +1106,7 @@
         "name": "Introduction to Ethics",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1144,7 +1122,7 @@
         "name": "History of Philosophy I",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1155,11 +1133,11 @@
         "expected_gpa": 3.1
         
     },
-    "AHS1303": {
+    "AHST1303": {
         "name": "Survey of Western Art History: Ancient to Medieval",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1169,11 +1147,11 @@
         "expected_gpa": 3.38
         
     },
-    "AHS1304": {
+    "AHST1304": {
         "name": "Survey of Western Art History: Renaissance to Modern",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1183,11 +1161,11 @@
         "expected_gpa": 3.38
         
     },
-    "AHS2331": {
+    "AHST2331": {
         "name": "Understanding Art",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1203,7 +1181,7 @@
         "name": "Exploration of the Arts",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1235,7 +1213,7 @@
         "name": "Introduction to Creative Writing",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1251,7 +1229,7 @@
         "name": "Introduction to World Dance Forms",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1267,7 +1245,7 @@
         "name": "Understanding Dance",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1283,7 +1261,7 @@
         "name": "Understanding Film",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1299,7 +1277,7 @@
         "name": "The Art of Fiction",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1315,7 +1293,7 @@
         "name": "The Art of Poetry",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1331,7 +1309,7 @@
         "name": "Understanding Music",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1347,7 +1325,7 @@
         "name": "Music Cultures of the World",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1363,7 +1341,7 @@
         "name": "Music in Western Civilization",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1379,7 +1357,7 @@
         "name": "Introduction to Philosophy of Art",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1395,7 +1373,7 @@
         "name": "Understanding Theatre",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1411,7 +1389,7 @@
         "name": "U.S. History Survey to Civil War",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1427,7 +1405,7 @@
         "name": "U.S. History Survey from Civil War",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1443,7 +1421,7 @@
         "name": "History of Texas",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1457,7 +1435,7 @@
         "name": "Themes and Ideas in American History",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1471,7 +1449,7 @@
         "name": "African-American History",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1486,7 +1464,7 @@
         "name": "U.S. Women from Settlement to Present",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1501,7 +1479,7 @@
         "name": "Making Choices in Free Market Systems",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1516,7 +1494,7 @@
         "name": "Business in a Global World",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1532,7 +1510,7 @@
         "name": "Lifespan Development",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1547,7 +1525,7 @@
         "name": "Introduction to Criminal Justice",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1563,7 +1541,7 @@
         "name": "Introduction to Crime and Criminology",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1578,7 +1556,7 @@
         "name": "Principles of Macroeconomics",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1594,7 +1572,7 @@
         "name": "Principles of Microeconomics",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1610,7 +1588,7 @@
         "name": "World Regional Geography",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1626,7 +1604,7 @@
         "name": "Introduction to Gender Studies",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1641,7 +1619,7 @@
         "name": "Literature and Anthropology",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1656,7 +1634,7 @@
         "name": "Introduction to Public and Nonprofit Management",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1671,7 +1649,7 @@
         "name": "Introduction to Psychology",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1687,7 +1665,7 @@
         "name": "Introduction to Sociology",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": true,
         "availability": [
@@ -1703,7 +1681,7 @@
         "name": "Contemporary Social Issues",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1718,7 +1696,7 @@
         "name": "Introduction to Gender Studies",
         "credit_hours": 3,
         "prereqs": [
-            ""
+            
         ],
         "is_transferable": false,
         "availability": [
@@ -1727,5 +1705,50 @@
         ],
         "difficulty_Score": 0.81,
         "expected_gpa": 3.19
+    },
+    "PSY2314": {
+        "name": "Lifespan Development",
+        "credit_hours": 3,
+        "prereqs": [],
+        "is_transferable": true,
+        "availability": ["Fall", "Spring"],
+        "difficulty_Score": 0.81,
+        "expected_gpa": 3.19
+    },
+    "CS4314": {
+        "name": "Intelligent Systems Analysis",
+        "credit_hours": 3,
+        "prereqs": ["MATH2418", "CS3341", "MATH2418"],
+        "is_transferable": false,
+        "availability": ["Fall", "Spring", "Summer"],
+        "difficulty_Score": 0.75,
+        "expected_gpa": 3.25
+    },
+    "CS4315": {
+        "name": "Intelligent Systems Design",
+        "credit_hours": 3,
+        "prereqs": ["CS4314"],
+        "is_transferable": false,
+        "availability": ["Spring"],
+        "difficulty_Score": 0.70,
+        "expected_gpa": 3.30
+    },
+    "CS4332": {
+        "name": "Introduction to Programming Video Games",
+        "credit_hours": 3,
+        "prereqs": ["CS3345"],
+        "is_transferable": false,
+        "availability": ["Spring"],
+        "difficulty_Score": 0.24,
+        "expected_gpa": 3.76
+    },
+    "SE3306": {
+        "name": "Mathematical Foundations of Software Engineering",
+        "credit_hours": 3,
+        "prereqs": ["CS2305"],
+        "is_transferable": true,
+        "availability": ["Fall", "Spring", "Summer"],
+        "difficulty_Score": 0.65,
+        "expected_gpa": 3.35
     }
 }
