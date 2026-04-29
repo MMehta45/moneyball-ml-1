@@ -12,9 +12,18 @@ class Tracker:
         self.total_gpa_points = 0
         self.core_totals = {key: 0 for key in requirements}
         self.semester_difficulty = []
+        # Track per-semester totals for hours and UTD hours
+        self.hours_by_sem = []
+        self.utd_hours_by_sem = []
 
 def update_core_totals(course_id, tracker, requirements, graph):
     for core_category, info in requirements.items():
+        if not isinstance(info, dict):
+            continue
+        # What changed: Skip mandatory_exact_matches when accumulating core hour totals.
+        # Why it needed to be changed: mandatory_exact_matches is a presence-based graduation rule, not a core-hour bucket.
+        if core_category == "mandatory_exact_matches":
+            continue
         if course_id in info["courses"]:
             tracker.core_totals[core_category] += graph.nodes[course_id]["credit_hours"]
 
@@ -50,6 +59,16 @@ def evaluate(individual, G, requirements):
     for i, semester in enumerate(individual):
         sem_hours = 0
         sem_difficulty = 0
+        sem_utd_hours = 0
+
+        # What changed: Move the duplicate-course check outside the per-course validation body.
+        # Why it needed to be changed: resetting the set inside the inner loop can repeat work and hide duplicate detection bugs.
+        seen_this_sem = set()
+        for semester_course_id in semester:
+            base_semester_id = semester_course_id.split('_')[0]
+            if base_semester_id in seen_this_sem:
+                return (DEATH_PENALTY,)
+            seen_this_sem.add(base_semester_id)
 
         # Looping courses in a semester
         for course_id in semester:
@@ -60,16 +79,6 @@ def evaluate(individual, G, requirements):
             # Invalid course id check:
             if base_id not in G.nodes:
                 return (DEATH_PENALTY,)
-
-            # checking if course is already in history
-            # if base_id in tracker.history: # changed from course_id to base_id
-            #     return (DEATH_PENALTY,)
-            seen_this_sem = set()
-            for course_id in semester:
-                base_id = course_id.split('_')[0]
-                if base_id in seen_this_sem:
-                    return (DEATH_PENALTY,)
-                seen_this_sem.add(base_id)
 
             data = G.nodes[base_id]
             credits = data.get("credit_hours", 0)
@@ -89,6 +98,7 @@ def evaluate(individual, G, requirements):
                 tracker.total_cost += (credits * 1000) # UTD: $1,000/hr
                 tracker.total_gpa_points += (data.get("expected_gpa", 4.0) * credits) 
                 tracker.utd_hours += credits 
+                sem_utd_hours += credits
             
             # Update trackers in the loop
             sem_hours += data["credit_hours"]
@@ -103,6 +113,8 @@ def evaluate(individual, G, requirements):
         
         # Update the tracker class
         tracker.total_hours += sem_hours
+        tracker.hours_by_sem.append(sem_hours)
+        tracker.utd_hours_by_sem.append(sem_utd_hours)
 
         #tracker.history.update(semester)
         for course_id in semester:
@@ -122,24 +134,44 @@ def evaluate(individual, G, requirements):
     # Checking for total hours requirement (120)
     if tracker.total_hours < 120:
         return (DEATH_PENALTY,)
+    if tracker.total_hours > 125:
+        return (DEATH_PENALTY,)
+
+    extra_hours = max(0, tracker.total_hours - 120)
+    extra_hours_penalty = extra_hours * 12000
+
+    # Enforce minimum UTD hours per semester if specified in requirements
+    min_utd_per_sem = requirements.get("min_utd_hours_per_sem", None)
+    if min_utd_per_sem is not None:
+        for sem_idx, sem_utd in enumerate(tracker.utd_hours_by_sem):
+            if sem_utd < min_utd_per_sem:
+                return (DEATH_PENALTY,)
     
     # Checking Degree Audit
     for core_category, info in requirements.items():
+        if not isinstance(info, dict):
+            continue
+        # What changed: Skip mandatory_exact_matches in the generic hours-based core audit.
+        # Why it needed to be changed: mandatory_exact_matches must be validated by exact course presence, not by hour totals.
+        if core_category == "mandatory_exact_matches":
+            continue
         if tracker.core_totals[core_category] < info["hours_required"]:
             return (DEATH_PENALTY,)
         
     missing_class_penalty = 0
     for category, info in requirements.items():
+        if not isinstance(info, dict):
+            continue
         # Penalty for missing a mandatory course
         if category == "mandatory_exact_matches":
-            for course in info["courses"]:
-                if course not in tracker.history:
-                    missing_class_penalty += 50000 
-                if tracker.core_totals[category] < info["hours_required"]:
-                        missing_class_penalty += 50000
+            # What changed: Check all mandatory_exact_matches courses together and apply the penalty only once.
+            # Why it needed to be changed: mandatory courses must all be present, and repeating the penalty per course inflated the score penalty.
+            missing_mandatory_courses = [course for course in info["courses"] if course not in tracker.history]
+            if missing_mandatory_courses:
+                missing_class_penalty += 50000
 
     base_score = 100000
-    final_score = base_score - missing_class_penalty
+    final_score = base_score - missing_class_penalty - extra_hours_penalty
 
     if final_score > 0:
         final_score += normalized_gpa * 500  # GPA is weighted more heavily
