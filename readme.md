@@ -48,6 +48,24 @@ Stretch Goals
 *   **Prerequisite Explainer:** Click a class node to see exactly why it was placed in that specific semester.
     
 *   **Export to PDF:** Allow users to download their Moneyball schedule for their real academic advisor.
+
+## Frontend Graph Setup
+
+To run the React Flow visualization of course prerequisites:
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Open your browser to `http://localhost:5173` to view the graph.
+
+The graph shows courses from the mock schedule as nodes, with edges representing prerequisite relationships. The layout is automatically arranged using Dagre for a hierarchical view.
     
 *   **Containerization:** Dockerize the API and UI for easy deployment.
     
