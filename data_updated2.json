@@ -739,7 +739,7 @@
         "name": "Introduction to VLSI Design",
         "credit_hours": 3,
         "prereqs": [
-            "CS4341"
+            "CS4341+4141"
         ],
         "is_transferable": false,
         "availability": [

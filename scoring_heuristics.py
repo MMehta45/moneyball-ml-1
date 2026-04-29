@@ -55,6 +55,8 @@ JUNIOR_YEAR_END_SEMESTER = 6   # semesters 5-6 = junior year in an 8-sem plan
 def check_internship_readiness(semester_plan: dict) -> dict:
    
     # Build a lookup: course_id -> earliest semester it appears in the plan
+    # What changed: Track the first semester for each course.
+    # Why: We need to know whether a critical course was finished by semester 6.
     completion_map = {}
     for sem, courses in semester_plan.items():
         for cid in courses:
@@ -62,28 +64,37 @@ def check_internship_readiness(semester_plan: dict) -> dict:
                 completion_map[cid] = sem
 
     completed_by = {}
+    completed_early = []
     missing = []
 
     for cid in INTERNSHIP_CRITICAL_COURSES:
         sem = completion_map.get(cid)
         completed_by[cid] = sem
-        if sem is None or sem > JUNIOR_YEAR_END_SEMESTER:
+        if sem is None:
             missing.append(cid)
+        elif sem <= JUNIOR_YEAR_END_SEMESTER:
+            # What changed: Count each critical course completed on time.
+            # Why: Internship readiness should reward progress course-by-course.
+            completed_early.append(cid)
 
-    earned = len(missing) == 0
-    score  = 6 if earned else 0
+    # What changed: Score per early course instead of all-or-nothing.
+    # Why: Partial internship prep should still be rewarded.
+    earned = len(completed_early) > 0
+    score  = len(completed_early)
 
-    if earned:
+    if completed_early:
         explanation = (
-            " Internship Readiness: +6 points\n"
-            " All internship critical courses are completed by the end of "
-            f"semester {JUNIOR_YEAR_END_SEMESTER} (junior year)."
+            f" Internship Readiness: +{score} points\n"
+            f" {len(completed_early)} internship critical course(s) are completed by "
+            f"the end of semester {JUNIOR_YEAR_END_SEMESTER} (junior year)."
         )
     else:
         explanation = (
             " Internship Readiness: +0 points\n"
-            f" The following internship critical courses are NOT completed "
-            f"by semester {JUNIOR_YEAR_END_SEMESTER}:\n"
+            f" No internship critical courses are completed by semester "
+            f"{JUNIOR_YEAR_END_SEMESTER}.\n"
+            # What changed: Show which critical courses are still missing.
+            # Why: This makes the result easier to debug.
             + "\n".join(f"     - {c} (completed in semester {completed_by[c] or 'never'})"
                         for c in missing)
         )
@@ -91,6 +102,7 @@ def check_internship_readiness(semester_plan: dict) -> dict:
     return {
         "score":        score,
         "earned":       earned,
+        "completed_early": completed_early,
         "completed_by": completed_by,
         "missing":      missing,
         "explanation":  explanation,

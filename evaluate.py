@@ -60,6 +60,7 @@ def evaluate(individual, G, requirements):
         sem_hours = 0
         sem_difficulty = 0
         sem_utd_hours = 0
+        sem_utd_billable_hours = 0
 
         # What changed: Move the duplicate-course check outside the per-course validation body.
         # Why it needed to be changed: resetting the set inside the inner loop can repeat work and hide duplicate detection bugs.
@@ -93,12 +94,16 @@ def evaluate(individual, G, requirements):
             if term not in data["availability"]:
                 return (DEATH_PENALTY,)
             if location == 'C':
-                tracker.total_cost += (credits * 60) # Collin: $60/hr
+                tracker.total_cost += (credits * 60)
             else: # Location is 'U'
-                tracker.total_cost += (credits * 1000) # UTD: $1,000/hr
+                # What changed: Cap UTD tuition once the semester reaches 12 UTD hours.
+                # Why: The tuition-block rule should stop charging after the block is full.
+                billable_utd_hours = min(credits, max(0, 12 - sem_utd_billable_hours))
+                tracker.total_cost += (billable_utd_hours * 1000)
                 tracker.total_gpa_points += (data.get("expected_gpa", 4.0) * credits) 
                 tracker.utd_hours += credits 
                 sem_utd_hours += credits
+                sem_utd_billable_hours += billable_utd_hours
             
             # Update trackers in the loop
             sem_hours += data["credit_hours"]

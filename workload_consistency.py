@@ -1,20 +1,20 @@
-def workload_consistency(schedule):
-    score = 0
+from statistics import pstdev
 
-    # I used 15 credits as a normal full-time semester
-    ideal_credits = 15
+
+def workload_consistency(schedule):
+    semester_credits = []
 
     for semester in schedule:
-        semester_credits = 0
+        total_credits = 0
 
         for course in semester:
-            semester_credits += course.get("credits", 0)
+            if isinstance(course, dict):
+                total_credits += course.get("credits", course.get("credit_hours", 0))
 
-        # checks how far the semester is from 15 credits
-        difference = abs(semester_credits - ideal_credits)
+        semester_credits.append(total_credits)
 
-        # if the semester is way too light or heavy, subtract points
-        if difference > 3:
-            score -= difference * 2
+    if len(semester_credits) < 2:
+        return 0
 
-    return score
+    # Penalize variability across semesters: higher spread means less consistent workload.
+    return -3 * pstdev(semester_credits)
