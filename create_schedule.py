@@ -95,14 +95,6 @@ def generate_individual(
     requirements=None,
     seed_mode=False,
 ):
-    """Generate one individual schedule.
-
-    What changed: Accept `requirements` and prioritize courses that satisfy
-    outstanding core-hour requirements and mandatory exact-match courses.
-    Why it needed to be changed: Random-only selection rarely produces schedules
-    that meet degree audit buckets; prioritizing required categories increases
-    chance of generating feasible seeds for the GA.
-    """
     individual = []
     history = set()
     remaining_nodes = set(G.nodes())
