@@ -1,9 +1,4 @@
-import json 
-
-with open("data_updated2.json", "r") as file:
-    data = json.load(file)
-
-def tuition_block(individual):
+def tuition_block(individual, course_data):
     total_points = 0
 
     for semesters in individual:
@@ -12,8 +7,17 @@ def tuition_block(individual):
         # What changed: Count UTD credits instead of total semester credits.
         # Why: The tuition-block reward should reflect hitting the UTD tuition threshold.
         for classes in semesters:
-            if classes.split("_")[1] == "U":
-                utd_credits += data[classes.split("_")[0]]["credit_hours"]
+            if not isinstance(classes, str):
+                continue
+            parts = classes.split("_")
+            if len(parts) < 2:
+                continue
+            if parts[1] == "U":
+                base_id = parts[0]
+                info = course_data.get(base_id)
+                if not isinstance(info, dict):
+                    continue
+                utd_credits += info.get("credit_hours", 0)
 
         # What changed: Reward semesters that reach 12+ UTD credit hours.
         # Why: This matches the tuition block rule more closely than total credits.

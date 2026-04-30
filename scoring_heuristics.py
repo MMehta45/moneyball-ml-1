@@ -126,7 +126,9 @@ def check_freshman_buffer(semester_plan: dict, course_data: dict) -> dict:
             info = course_data.get(cid)
             if info is None:
                 continue  
-            diff = info["difficulty_Score"]
+            diff = info.get("difficulty_Score")
+            if not isinstance(diff, (int, float)):
+                continue
             if diff > HEAVY_THRESHOLD:
                 heavy_courses.append((cid, info["name"], diff, sem))
 

@@ -1,5 +1,6 @@
 
 import re
+from heuristics_adapter import compute_heuristics_breakdown
 
 DEATH_PENALTY = -10000000
 
@@ -28,6 +29,61 @@ def update_core_totals(course_id, tracker, requirements, graph):
             tracker.core_totals[core_category] += graph.nodes[course_id]["credit_hours"]
 
 
+def _core_requirement_categories(requirements):
+    return [
+        category
+        for category, info in requirements.items()
+        if isinstance(info, dict) and category.startswith("core_")
+    ]
+
+
+def _is_core_course(course_id, requirements):
+    for category in _core_requirement_categories(requirements):
+        if course_id in requirements[category].get("courses", []):
+            return True
+    return False
+
+
+def _format_score(value):
+    return f"{value:.2f}" if isinstance(value, float) else str(value)
+
+
+def _print_evaluation_debug(
+    final_score,
+    base_score,
+    normalized_gpa,
+    normalized_cost,
+    missing_class_penalty,
+    extra_hours_penalty,
+    senior_core_penalty,
+    fully_core_penalty,
+    senior_core_class_count,
+    core_counts_by_sem,
+    tracker,
+    heuristics_breakdown,
+):
+    print("\n---- EVALUATION DEBUG ----")
+    print(f"Final score: {_format_score(final_score)}")
+    print(f"Base score: {base_score}")
+    print(f"Total hours: {tracker.total_hours}")
+    print(f"UTD hours: {tracker.utd_hours}")
+    print(f"Semester hours: {tracker.hours_by_sem}")
+    print(f"Semester UTD hours: {tracker.utd_hours_by_sem}")
+    print(f"Normalized GPA contribution: {_format_score(normalized_gpa * 500)}")
+    print(f"Normalized cost contribution: {_format_score(normalized_cost * 500)}")
+    print(f"Missing mandatory penalty: -{missing_class_penalty}")
+    print(f"Extra hours penalty: -{extra_hours_penalty}")
+    print(f"Senior core count: {senior_core_class_count}")
+    print(f"Senior core penalty: -{senior_core_penalty}")
+    print(f"Core counts by semester: {core_counts_by_sem}")
+    print(f"Fully-core semester penalty: -{fully_core_penalty}")
+    print("Heuristic components:")
+    for name, score in heuristics_breakdown["components"].items():
+        print(f"  {name}: {_format_score(score)}")
+    print(f"Heuristic total: {_format_score(heuristics_breakdown['total'])}")
+    print("--------------------------\n")
+
+
 def _is_cs_4xxx(course_id):
     return re.fullmatch(r"CS4\d{3}", course_id) is not None
 
@@ -50,10 +106,13 @@ def _prereq_satisfied(prereq, course_base_id, history):
     return prereq in history
 
 
-def evaluate(individual, G, requirements):
+def evaluate(individual, G, requirements, debug=False):
     #history = set()
     #core_totals = {key: 0 for key in requirements}
     tracker = Tracker(requirements)
+    senior_core_class_count = 0
+    core_counts_by_sem = []
+    fully_core_semester_count = 0
 
     # Looping through all the semesters of the entire degree plan
     for i, semester in enumerate(individual):
@@ -61,6 +120,7 @@ def evaluate(individual, G, requirements):
         sem_difficulty = 0
         sem_utd_hours = 0
         sem_utd_billable_hours = 0
+        sem_core_class_count = 0
 
         # What changed: Move the duplicate-course check outside the per-course validation body.
         # Why it needed to be changed: resetting the set inside the inner loop can repeat work and hide duplicate detection bugs.
@@ -112,6 +172,14 @@ def evaluate(individual, G, requirements):
             # access the tracker class and accounts for requirements.json
             update_core_totals(base_id, tracker, requirements, G)
 
+            # What changed: Count core courses in senior year (semesters 7 and 8) only.
+            # Why it needed to be changed: we want to cap core-heavy senior schedules without counting technical electives.
+            if _is_core_course(base_id, requirements):
+                sem_core_class_count += 1
+
+            if i >= 6 and _is_core_course(base_id, requirements):
+                senior_core_class_count += 1
+
         # 3. Semester Load/Credit Hours (max 19)
         if sem_hours > 19:
             return (DEATH_PENALTY,)
@@ -120,6 +188,9 @@ def evaluate(individual, G, requirements):
         tracker.total_hours += sem_hours
         tracker.hours_by_sem.append(sem_hours)
         tracker.utd_hours_by_sem.append(sem_utd_hours)
+        core_counts_by_sem.append(sem_core_class_count)
+        if semester and sem_core_class_count == len(semester):
+            fully_core_semester_count += 1
 
         #tracker.history.update(semester)
         for course_id in semester:
@@ -144,6 +215,10 @@ def evaluate(individual, G, requirements):
 
     extra_hours = max(0, tracker.total_hours - 120)
     extra_hours_penalty = extra_hours * 12000
+
+    senior_core_overage = max(0, senior_core_class_count - 3)
+    senior_core_penalty = senior_core_overage * 25000
+    fully_core_penalty = fully_core_semester_count * 75000
 
     # Enforce minimum UTD hours per semester if specified in requirements
     min_utd_per_sem = requirements.get("min_utd_hours_per_sem", None)
@@ -176,11 +251,31 @@ def evaluate(individual, G, requirements):
                 missing_class_penalty += 50000
 
     base_score = 100000
-    final_score = base_score - missing_class_penalty - extra_hours_penalty
+    final_score = base_score - missing_class_penalty - extra_hours_penalty - senior_core_penalty - fully_core_penalty
 
     if final_score > 0:
         final_score += normalized_gpa * 500  # GPA is weighted more heavily
         final_score += normalized_cost * 500     # Cost is weighted less heavily
+
+    # Add signed heuristic deltas (rewards and penalties) from standalone scoring modules.
+    heuristics_breakdown = compute_heuristics_breakdown(individual, G)
+    final_score += heuristics_breakdown["total"]
+
+    if debug:
+        _print_evaluation_debug(
+            final_score,
+            base_score,
+            normalized_gpa,
+            normalized_cost,
+            missing_class_penalty,
+            extra_hours_penalty,
+            senior_core_penalty,
+            fully_core_penalty,
+            senior_core_class_count,
+            core_counts_by_sem,
+            tracker,
+            heuristics_breakdown,
+        )
              
     return (final_score,)
 

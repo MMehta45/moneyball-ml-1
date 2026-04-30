@@ -9,6 +9,7 @@ from deap import base, tools, algorithms, creator
 from create_graph import load_data_from_json, create_graph
 from create_schedule import generate_individual
 from evaluate import evaluate
+from heuristics_adapter import compute_heuristics_breakdown
 
 
 def total_hours(individual, G):
@@ -69,6 +70,7 @@ def run_single(seed, G, requirements, pop_size=200, ngen=300, cxpb=0.8, mutpb=0.
             "fitness_score": indiv.fitness.values[0],
             "total_hours": total_hours(indiv, G),
             "semester_hours": semester_hours(indiv, G),
+            "heuristics": compute_heuristics_breakdown(indiv, G),
             "schedule": schedule,
         })
 
@@ -78,6 +80,7 @@ def run_single(seed, G, requirements, pop_size=200, ngen=300, cxpb=0.8, mutpb=0.
         "confirmed_best_score": confirmed_best_score,
         "best_total_hours": total_hours(best, G),
         "best_semester_hours": semester_hours(best, G),
+        "best_heuristics": compute_heuristics_breakdown(best, G),
         "best_schedule": [list(sem) for sem in best],
         "runtime": runtime,
         "hof": hof_plain,

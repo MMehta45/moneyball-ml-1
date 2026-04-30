@@ -55,6 +55,23 @@ def _contributes_to_unmet_requirement(course_id, core_hours_collected, requireme
     return False
 
 
+def _core_requirement_categories(requirements):
+    if not requirements:
+        return []
+    return [
+        category
+        for category, info in requirements.items()
+        if isinstance(info, dict) and category.startswith("core_")
+    ]
+
+
+def _is_core_course(course_id, requirements):
+    for category in _core_requirement_categories(requirements):
+        if course_id in requirements[category].get("courses", []):
+            return True
+    return False
+
+
 def _semester_hours(semester, G):
     return sum(G.nodes[course.split('_')[0]].get("credit_hours", 0) for course in semester)
 
@@ -133,6 +150,10 @@ def generate_individual(
             score = 0
             ch = G.nodes[node].get("credit_hours", 0)
             is_utd = not G.nodes[node].get("is_transferable", False)
+            is_core_course = _is_core_course(node, requirements)
+            contributes_unmet_requirement = _contributes_to_unmet_requirement(
+                node, core_hours_collected, requirements
+            )
             # big boost if node is a mandatory exact-match
             if node in mand_list:
                 score += 1000
@@ -156,6 +177,13 @@ def generate_individual(
                         scarcity_bonus = max(0, 100 - len(requirement_courses))
                         major_bonus = 300 if core_cat == "major_technical_electives" else 0
                         score += 200 + scarcity_bonus + major_bonus + min(ch, needed)
+            # Avoid piling leftover cores into the back half of the degree.
+            if sem_idx >= 5 and is_core_course and not contributes_unmet_requirement:
+                score -= 500
+            if sem_idx >= 6 and is_core_course and not contributes_unmet_requirement:
+                score -= 1200
+            if sem_idx >= 6 and not is_core_course:
+                score += 250
             return score
 
         # Force schedule any available mandatory exact-match courses first.
@@ -191,12 +219,26 @@ def generate_individual(
             candidates.sort(key=lambda n: (score_node(n), n), reverse=True)
         for course_id in candidates:
             course_hours = G.nodes[course_id].get("credit_hours", 0)
+            is_core_course = _is_core_course(course_id, requirements)
             if (
                 course_id not in mand_list
                 and _has_unmet_requirements(core_hours_collected, requirements)
                 and not _contributes_to_unmet_requirement(course_id, core_hours_collected, requirements)
             ):
                 continue
+            if (
+                sem_idx >= 6
+                and is_core_course
+                and not _contributes_to_unmet_requirement(course_id, core_hours_collected, requirements)
+            ):
+                non_core_alternative_exists = any(
+                    other != course_id
+                    and not _is_core_course(other, requirements)
+                    and _semester_can_take(other, sem_hours, total_hours, semester_max_hours, max_total_hours, G)
+                    for other in candidates
+                )
+                if non_core_alternative_exists:
+                    continue
             if _semester_can_take(course_id, sem_hours, total_hours, semester_max_hours, max_total_hours, G):
                 location = _choose_location(course_id, sem_utd_hours, min_utd_per_sem, G)
                 semester.append(f"{course_id}_{location}")
@@ -336,7 +378,7 @@ if __name__ == "__main__":
 
     # 4. Display Results
     best_ind = hof[0]
-    confirmed_score = evaluate(best_ind, G, requirements)[0]
+    confirmed_score = evaluate(best_ind, G, requirements, debug=True)[0]
     best_hours = sum(_semester_hours(sem, G) for sem in best_ind)
     population_best = max(pop, key=lambda ind: ind.fitness.values[0])
     print(f"\nBEST SCHEDULE FOUND (Score: {best_ind.fitness.values[0]}):")

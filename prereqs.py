@@ -1,20 +1,5 @@
 import json
 
-with open("data_updated2.json", "r") as f:
-    data = json.load(f)
-
-# mock schedule
-schedule = [
-    ["CS1436", "MATH2413", "ECS1100"],
-    ["CS1337", "MATH2414", "PHYS2325+2125", "CS2305"],
-    ["CS2340", "PHYS2326+2126", "MATH2418"],
-    ["ECS2390", "CS3341", "CS3345", "CS3377"],
-    ["CS4337", "CS4341+4141", "CS3354"],
-    ["CS4349", "CS3162", "CS4348"],
-    ["CS4384", "CS4347"],
-    ["CS4485"],
-]
-
 
 def normalize_course_id(course_id: str) -> str:
     # What changed: normalize schedule IDs like CS3345_U / CS3345_C -> CS3345.
@@ -77,6 +62,22 @@ def calculate_prereq_points(schedule, data, prereq_count, target_sem=6):
     return score
 
 
-prereqs = build_prereq_dict(data)
-score = calculate_prereq_points(schedule, data, prereqs, target_sem=6)
-print(score)
+if __name__ == "__main__":
+    with open("data_updated2.json", "r") as f:
+        data = json.load(f)
+
+    # mock schedule
+    schedule = [
+        ["CS1436", "MATH2413", "ECS1100"],
+        ["CS1337", "MATH2414", "PHYS2325+2125", "CS2305"],
+        ["CS2340", "PHYS2326+2126", "MATH2418"],
+        ["ECS2390", "CS3341", "CS3345", "CS3377"],
+        ["CS4337", "CS4341+4141", "CS3354"],
+        ["CS4349", "CS3162", "CS4348"],
+        ["CS4384", "CS4347"],
+        ["CS4485"],
+    ]
+
+    prereqs = build_prereq_dict(data)
+    score = calculate_prereq_points(schedule, data, prereqs, target_sem=6)
+    print(score)

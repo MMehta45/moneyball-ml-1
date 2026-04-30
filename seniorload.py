@@ -1,17 +1,5 @@
 import json
 
-with open("data_updated2.json", "r") as f:
-    data = json.load(f)
-
-schedule = [["CS1436", "MATH2413", "ECS1100"], 
-            ["CS1337", "MATH2414", "PHYS2325+2125", "CS2305"],
-            ["CS2340", "PHYS2326+2126", "MATH2418"],
-            ["ECS2390", "CS3341", "CS3345", "CS3377"],
-            ["CS4337", "CS4341+4141", "CS3354"],
-            ["CS4349", "CS3162","CS4348"],
-            ["CS4384", "CS4347"],
-            ["CS4334"]]
-
 def senior_load_reduction(schedule, data):
     # What changed: Removed global score dependency and compute penalty internally.
     # Why it needed to be changed: Keeps the function standalone and deterministic.
@@ -42,5 +30,18 @@ def senior_load_reduction(schedule, data):
     return int(-8 * hard_class_count)
 
 
-penalty = senior_load_reduction(schedule, data)
-print(penalty)
+if __name__ == "__main__":
+    with open("data_updated2.json", "r") as f:
+        data = json.load(f)
+
+    schedule = [["CS1436", "MATH2413", "ECS1100"],
+                ["CS1337", "MATH2414", "PHYS2325+2125", "CS2305"],
+                ["CS2340", "PHYS2326+2126", "MATH2418"],
+                ["ECS2390", "CS3341", "CS3345", "CS3377"],
+                ["CS4337", "CS4341+4141", "CS3354"],
+                ["CS4349", "CS3162", "CS4348"],
+                ["CS4384", "CS4347"],
+                ["CS4334"]]
+
+    penalty = senior_load_reduction(schedule, data)
+    print(penalty)
