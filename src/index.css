@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --orange: #C75B12;
+  --green: #154734;
+  --gold: #E87722;
+  --cream: #FDF8F3;
+  --dark: #0D1F17;
+}
+
+/* Keep root container full height for layout stability */
+#root {
+  height: 100vh;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(197, 91, 18, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 91, 18, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-fade-in { animation: fadeIn 0.8s ease forwards; }
+.opacity-0 { opacity: 0; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--orange);
+  margin-left: 2px;
+}
+
+.hour-pill {
+  transition: all 0.15s ease;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  border: 1.5px solid rgba(197, 91, 18, 0.25);
+}
+.hour-pill:hover { border-color: var(--orange); background: rgba(197, 91, 18, 0.08); }
+.hour-pill.selected { background: var(--orange); border-color: var(--orange); color: white; }
+
+.hour-input {
+  font-family: 'Space Mono', monospace;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(197, 91, 18, 0.3);
+  outline: none;
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--orange);
+  width: 100%;
+  transition: border-color 0.2s;
+}
+.hour-input:focus { border-bottom-color: var(--orange); }
+.hour-input::placeholder { color: rgba(197, 91, 18, 0.25); }
+
+.start-btn {
+  background: var(--green);
+  color: var(--cream);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.start-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+}
+.start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(21, 71, 52, 0.35); }
+.start-btn:active { transform: translateY(0); }
+.start-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.corner-tl {
+  position: absolute; top: 0; left: 0;
+  width: 32px; height: 32px;
+  border-top: 2px solid var(--orange);
+  border-left: 2px solid var(--orange);
+}
+.corner-br {
+  position: absolute; bottom: 0; right: 0;
+  width: 32px; height: 32px;
+  border-bottom: 2px solid var(--orange);
+  border-right: 2px solid var(--orange);
+}
+
+/* ── Moneyball wordmark ───────────────────────── */
+.moneyball-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.moneyball-word {
+  color: var(--dark);
+}
+
+.moneyball-word.accent {
+  color: var(--orange);
+  position: relative;
+}
+
+/* Subtle underline accent on "ball" */
+.moneyball-word.accent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+.moneyball-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  opacity: 0.55;
+  padding-left: 10px;
+  border-left: 1px solid rgba(197, 91, 18, 0.2);
+  margin-left: 2px;
+}
