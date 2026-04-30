@@ -1,20 +1,19 @@
 import { useState } from 'react'
 
 interface WelcomeScreenProps {
-  onStart: (minHoursPerSem: number) => void
+  onStart: () => void | Promise<void>
+  isGenerating: boolean
 }
 
 const QUICK_MIN = [3, 6, 9, 12, 15]
 
 type Step = 'landing' | 'modal'
 
-export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
+export default function WelcomeScreen({ onStart, isGenerating }: WelcomeScreenProps) {
   const [step, setStep] = useState<Step>('landing')
   const [hours, setHours] = useState<string>('')
   const [selected, setSelected] = useState<number | null>(null)
   const [error, setError] = useState('')
-
-  const effectiveHours = selected ?? (hours ? parseInt(hours) : null)
 
   const handlePillClick = (h: number) => {
     setSelected(h)
@@ -30,15 +29,9 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
   }
 
   const handleGenerate = () => {
-    if (!effectiveHours) {
-      setError('Please enter or select a minimum.')
-      return
-    }
-    if (effectiveHours < 1 || effectiveHours > 21) {
-      setError('Enter a value between 1 and 21 hrs/sem.')
-      return
-    }
-    onStart(effectiveHours)
+    setError('')
+    setStep('landing')
+    void onStart()
   }
 
   const closeModal = () => {
@@ -94,6 +87,54 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
           </div>
         </div>
       </div>
+
+      {isGenerating && (
+        <div
+          className="fixed inset-0 flex items-center justify-center px-4 z-50"
+          style={{ background: 'rgba(13,31,23,0.55)', backdropFilter: 'blur(8px)' }}
+        >
+          <div
+            className="w-full max-w-sm rounded-2xl p-8 text-center"
+            style={{
+              background: 'var(--cream)',
+              border: '1px solid rgba(197,91,18,0.18)',
+              boxShadow: '0 24px 60px rgba(13,31,23,0.25), 0 1px 0 rgba(255,255,255,0.9) inset',
+            }}
+          >
+            <p
+              className="text-xs tracking-widest uppercase mb-4"
+              style={{ fontFamily: 'Space Mono, monospace', color: 'var(--orange)' }}
+            >
+              // running deap
+            </p>
+            <h2
+              className="text-2xl font-bold mb-3"
+              style={{ fontFamily: 'Space Mono, monospace', color: 'var(--dark)' }}
+            >
+              Generating schedule...
+            </h2>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: 'rgba(13,31,23,0.5)', fontFamily: 'DM Sans, sans-serif' }}
+            >
+              We&apos;re building the best schedule we can find. This can take a few seconds.
+            </p>
+
+            <div
+              className="mt-6 h-3 rounded-full overflow-hidden"
+              style={{ background: 'rgba(197,91,18,0.12)' }}
+            >
+              <div
+                className="h-full rounded-full animate-loading-bar"
+                style={{
+                  width: '45%',
+                  background: 'linear-gradient(90deg, var(--orange), #f0a45c, var(--orange))',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Modal overlay ── */}
       {step === 'modal' && (
@@ -212,7 +253,7 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
             <button
               className="start-btn w-full py-4 rounded-xl text-sm font-medium"
               onClick={handleGenerate}
-              disabled={!effectiveHours}
+              disabled={isGenerating}
             >
               GENERATE SCHEDULE →
             </button>

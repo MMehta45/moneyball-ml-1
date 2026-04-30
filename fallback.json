@@ -3,44 +3,44 @@
     "semester": 1,
     "term": "Fall",
     "courses": [
-      "CS1200_U",
-      "ECS1100_U",
       "CS1436_U",
       "MATH2413_U",
-      "RHET1302_U"
+      "RHET1302_U",
+      "CS1200_U",
+      "ECS1100_U"
     ]
   },
   {
     "semester": 2,
     "term": "Spring",
     "courses": [
+      "MATH2418_U",
+      "CS2305_U",
       "ECS2390_U",
       "MATH2414_U",
-      "MATH2418_U",
-      "CS1337_U",
-      "CS2305_C"
+      "CS1337_C"
     ]
   },
   {
     "semester": 3,
     "term": "Fall",
     "courses": [
-      "CS3341_U",
-      "CS4384_U",
       "PHYS2325+2125_U",
       "CS2336_U",
-      "CS2340_C"
+      "CS3341_U",
+      "CS2340_U",
+      "CS4384_U"
     ]
   },
   {
     "semester": 4,
     "term": "Spring",
     "courses": [
-      "CS3345_U",
+      "PHYS2326+2126_U",
       "CS3354_U",
+      "CS3345_U",
       "CS3377_U",
-      "CS4337_U",
-      "PHYS2326+2126_C"
+      "CS4337_U"
     ]
   },
   {
@@ -48,8 +48,8 @@
     "term": "Fall",
     "courses": [
       "CS4341+4141_U",
-      "CS4347_U",
       "CS4348_U",
+      "CS4347_U",
       "GOVT2305_U",
       "CS4399_U"
     ]

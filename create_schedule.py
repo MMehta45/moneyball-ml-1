@@ -9,12 +9,25 @@ from create_graph import load_data_from_json, create_graph
 creator.create("FitnessMax", base.Fitness, weights=(1.0,))
 creator.create("Individual", list, fitness=creator.FitnessMax)
 
-def _semester_can_take(course_id, sem_hours, total_hours, max_hours, max_total_hours, G):
+def _semester_can_take(
+    course_id,
+    sem_hours,
+    total_hours,
+    max_hours,
+    max_total_hours,
+    remaining_semesters_after_current,
+    min_utd_per_sem,
+    G,
+):
     course_hours = G.nodes[course_id].get("credit_hours", 0)
     if sem_hours + course_hours > max_hours:
         return False
     if total_hours + sem_hours + course_hours > max_total_hours:
         return False
+    if min_utd_per_sem is not None and min_utd_per_sem > 0:
+        reserved_future_hours = remaining_semesters_after_current * min_utd_per_sem
+        if total_hours + sem_hours + course_hours + reserved_future_hours > max_total_hours:
+            return False
     return True
 
 
@@ -24,6 +37,8 @@ def _choose_location(course_id, sem_utd_hours, min_utd_per_sem, G):
         return "U"
     if min_utd_per_sem is not None and sem_utd_hours < min_utd_per_sem:
         return "U"
+    if min_utd_per_sem is not None and min_utd_per_sem > 0:
+        return "C"
     return random.choice(["U", "C"])
 
 
@@ -84,6 +99,12 @@ def _semester_utd_hours(semester, G):
     )
 
 
+def _semester_is_all_core(semester, requirements):
+    if not semester:
+        return False
+    return all(_is_core_course(course.split('_')[0], requirements) for course in semester)
+
+
 def _can_move_semester_courses(courses, target_semester, target_idx, individual, G, max_hours):
     target_term = "Fall" if target_idx % 2 == 0 else "Spring"
     if _semester_hours(target_semester, G) + _semester_hours(courses, G) > max_hours:
@@ -107,7 +128,7 @@ def generate_individual(
     G,
     max_semesters=8,
     max_hours=19,
-    preferred_max_hours=16,
+    preferred_max_hours=17,
     max_total_hours=125,
     requirements=None,
     seed_mode=False,
@@ -128,6 +149,7 @@ def generate_individual(
         sem_utd_course_count = 0
         term = "Fall" if sem_idx % 2 == 0 else "Spring"
         semester_max_hours = max_hours if sem_idx == max_semesters - 1 else preferred_max_hours
+        remaining_semesters_after_current = max_semesters - sem_idx - 1
         
         candidates = []
         for node in remaining_nodes:
@@ -149,6 +171,7 @@ def generate_individual(
         def score_node(node):
             score = 0
             ch = G.nodes[node].get("credit_hours", 0)
+            is_transferable = G.nodes[node].get("is_transferable", False)
             is_utd = not G.nodes[node].get("is_transferable", False)
             is_core_course = _is_core_course(node, requirements)
             contributes_unmet_requirement = _contributes_to_unmet_requirement(
@@ -161,6 +184,8 @@ def generate_individual(
             if min_utd_per_sem is not None and sem_hours >= 0:
                 if sem_utd_hours < min_utd_per_sem and is_utd:
                     score += 500
+                if sem_utd_hours >= min_utd_per_sem and is_transferable:
+                    score += 200
             # add score proportional to how much this node would reduce deficits
             if requirements:
                 for core_cat, info in requirements.items():
@@ -184,13 +209,31 @@ def generate_individual(
                 score -= 1200
             if sem_idx >= 6 and not is_core_course:
                 score += 250
+            if len(semester) >= 3 and _semester_is_all_core(semester, requirements) and not is_core_course:
+                score += 1500
             return score
 
         # Force schedule any available mandatory exact-match courses first.
         mand_candidates = [n for n in candidates if n in mand_list]
+        mand_candidates.sort(
+            key=lambda node: (
+                G.nodes[node].get("is_transferable", False),
+                -G.nodes[node].get("credit_hours", 0),
+                node,
+            )
+        )
         for m in mand_candidates:
             course_hours = G.nodes[m].get("credit_hours", 0)
-            if _semester_can_take(m, sem_hours, total_hours, semester_max_hours, max_total_hours, G):
+            if _semester_can_take(
+                m,
+                sem_hours,
+                total_hours,
+                semester_max_hours,
+                max_total_hours,
+                remaining_semesters_after_current,
+                min_utd_per_sem,
+                G,
+            ):
                 location = _choose_location(m, sem_utd_hours, min_utd_per_sem, G)
                 semester.append(f"{m}_{location}")
                 sem_hours += course_hours
@@ -220,10 +263,12 @@ def generate_individual(
         for course_id in candidates:
             course_hours = G.nodes[course_id].get("credit_hours", 0)
             is_core_course = _is_core_course(course_id, requirements)
+            all_current_courses_are_core = _semester_is_all_core(semester, requirements)
             if (
                 course_id not in mand_list
                 and _has_unmet_requirements(core_hours_collected, requirements)
                 and not _contributes_to_unmet_requirement(course_id, core_hours_collected, requirements)
+                and not (len(semester) >= 3 and all_current_courses_are_core and not is_core_course)
             ):
                 continue
             if (
@@ -234,12 +279,30 @@ def generate_individual(
                 non_core_alternative_exists = any(
                     other != course_id
                     and not _is_core_course(other, requirements)
-                    and _semester_can_take(other, sem_hours, total_hours, semester_max_hours, max_total_hours, G)
+                    and _semester_can_take(
+                        other,
+                        sem_hours,
+                        total_hours,
+                        semester_max_hours,
+                        max_total_hours,
+                        remaining_semesters_after_current,
+                        min_utd_per_sem,
+                        G,
+                    )
                     for other in candidates
                 )
                 if non_core_alternative_exists:
                     continue
-            if _semester_can_take(course_id, sem_hours, total_hours, semester_max_hours, max_total_hours, G):
+            if _semester_can_take(
+                course_id,
+                sem_hours,
+                total_hours,
+                semester_max_hours,
+                max_total_hours,
+                remaining_semesters_after_current,
+                min_utd_per_sem,
+                G,
+            ):
                 location = _choose_location(course_id, sem_utd_hours, min_utd_per_sem, G)
                 semester.append(f"{course_id}_{location}")
                 sem_hours += course_hours
@@ -266,7 +329,16 @@ def generate_individual(
                     continue
                 if G.nodes[course_id].get("is_transferable", False):
                     continue
-                if _semester_can_take(course_id, sem_hours, total_hours, semester_max_hours, max_total_hours, G):
+                if _semester_can_take(
+                    course_id,
+                    sem_hours,
+                    total_hours,
+                    semester_max_hours,
+                    max_total_hours,
+                    remaining_semesters_after_current,
+                    min_utd_per_sem,
+                    G,
+                ):
                     utd_candidates.append(course_id)
             if seed_mode:
                 utd_candidates.sort(key=lambda n: (G.nodes[n].get("credit_hours", 0), n), reverse=True)
@@ -277,7 +349,16 @@ def generate_individual(
                 course_hours = G.nodes[course_id].get("credit_hours", 0)
                 if sem_utd_hours >= min_utd_per_sem:
                     break
-                if _semester_can_take(course_id, sem_hours, total_hours, semester_max_hours, max_total_hours, G):
+                if _semester_can_take(
+                    course_id,
+                    sem_hours,
+                    total_hours,
+                    semester_max_hours,
+                    max_total_hours,
+                    remaining_semesters_after_current,
+                    min_utd_per_sem,
+                    G,
+                ):
                     semester.append(f"{course_id}_U")
                     scheduled_this_sem.add(course_id)
                     sem_hours += course_hours

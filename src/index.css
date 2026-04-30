@@ -46,6 +46,12 @@ body {
   50% { opacity: 0; }
 }
 
+@keyframes loadingBar {
+  0% { transform: translateX(-120%); }
+  50% { transform: translateX(0%); }
+  100% { transform: translateX(120%); }
+}
+
 .animate-slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .animate-fade-in { animation: fadeIn 0.8s ease forwards; }
 .opacity-0 { opacity: 0; }
@@ -60,6 +66,10 @@ body {
   animation: blink 1s step-end infinite;
   color: var(--orange);
   margin-left: 2px;
+}
+
+.animate-loading-bar {
+  animation: loadingBar 1.25s ease-in-out infinite;
 }
 
 .hour-pill {

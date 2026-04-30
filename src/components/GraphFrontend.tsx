@@ -16,7 +16,6 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import data from '../../data_updated2.json';
-import schedule from '../../schedule.json';
 
 const nodeWidth = 140;
 const nodeHeight = 140;
@@ -24,6 +23,8 @@ const columnSpacing = 240;
 const rowSpacing = 180;
 
 const formatCourseCode = (courseCode: string) => courseCode.replace(/([A-Z]+)(\d+)/, '$1 $2');
+const stripTag = (courseCode: string) => courseCode.replace(/_(U|C)$/, '');
+const getLocationLabel = (courseCode: string) => (courseCode.endsWith('_C') ? 'Collin' : 'Campus');
 
 // Helper to determine difficulty color
 const getDifficultyColor = (score: number): string => {
@@ -34,9 +35,6 @@ const getDifficultyColor = (score: number): string => {
 
 // Custom node with handles on left/right sides
 const CourseNode: React.FC<{ data: any }> = ({ data }) => {
-  const isInPath = data.isInPath ?? true;
-  const opacity = isInPath ? 1 : 0.25;
-
   return (
     <div
       onMouseEnter={() => data.onHover?.(data.id)}
@@ -61,7 +59,7 @@ const CourseNode: React.FC<{ data: any }> = ({ data }) => {
         Difficulty: {data.difficulty?.toFixed(2)}
       </div>
       <div style={{ fontSize: '13px', marginTop: '4px', color: '#f8fafc', fontWeight: 'bold', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-        Campus
+        {data.location}
       </div>
       <Handle type="source" position={Position.Right} />
       
@@ -69,10 +67,18 @@ const CourseNode: React.FC<{ data: any }> = ({ data }) => {
   );
 };
 
-const GraphFrontend: React.FC = () => {
+interface GraphFrontendProps {
+  scheduleVersion: number
+  darkMode: boolean
+  onDarkModeToggle: () => void
+  onReset: () => void
+}
+
+const GraphFrontend: React.FC<GraphFrontendProps> = ({ scheduleVersion }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [scheduleData, setScheduleData] = useState<any[]>([]);
   const originalNodesRef = React.useRef<Node[] | null>(null);
   const originalEdgesRef = React.useRef<Edge[] | null>(null);
 
@@ -106,15 +112,36 @@ const GraphFrontend: React.FC = () => {
   // memoize nodeTypes so ReactFlow doesn't warn about new objects each render
   const nodeTypes = React.useMemo(() => ({ courseNode: CourseNode }), []);
 
+  React.useEffect(() => {
+    let cancelled = false;
+
+    const loadSchedule = async () => {
+      const response = await fetch(`/schedule.json?v=${scheduleVersion}`, { cache: 'no-store' });
+      const nextSchedule = await response.json();
+      if (!cancelled) {
+        setScheduleData(nextSchedule);
+      }
+    };
+
+    void loadSchedule();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [scheduleVersion]);
+
   useLayoutEffect(() => {
+    if (scheduleData.length === 0) {
+      return;
+    }
+
     // Get all courses from data
     const courseData = data as Record<string, any>;
-    const scheduleData = schedule as any[];
 
     // Collect all unique courses from schedule
     const scheduleCourses = new Set<string>();
     scheduleData.forEach(sem => {
-      sem.courses.forEach((course: string) => scheduleCourses.add(course));
+      sem.courses.forEach((course: string) => scheduleCourses.add(stripTag(course)));
     });
 
     const semesterOrder = scheduleData
@@ -126,7 +153,7 @@ const GraphFrontend: React.FC = () => {
     semesterOrder.forEach((semester) => {
       semesterCourseMap[semester] = scheduleData
         .find((sem) => sem.semester === semester)
-        ?.courses.filter((course: string) => scheduleCourses.has(course)) || [];
+        ?.courses || [];
     });
 
     const initialNodes: Node[] = [];
@@ -170,7 +197,8 @@ const GraphFrontend: React.FC = () => {
 
     semesterOrder.forEach((semester) => {
       const courses = semesterCourseMap[semester] || [];
-      courses.forEach((courseCode, index) => {
+      courses.forEach((rawCourseCode, index) => {
+        const courseCode = stripTag(rawCourseCode);
         if (courseData[courseCode]) {
           const displayCode = formatCourseCode(courseCode);
           const difficultyScore = courseData[courseCode].difficulty_Score || 0;
@@ -180,6 +208,7 @@ const GraphFrontend: React.FC = () => {
             type: 'courseNode',
             data: {
               label: displayCode,
+              location: getLocationLabel(rawCourseCode),
               difficulty: difficultyScore,
               id: courseCode,
               onHover: (nodeId: string) => {
@@ -307,7 +336,7 @@ const GraphFrontend: React.FC = () => {
     // capture the original layout snapshots so hover/unhover can reliably restore
     originalNodesRef.current = initialNodes.slice();
     originalEdgesRef.current = initialEdges.slice();
-  }, [setNodes, setEdges]);
+  }, [scheduleData, setNodes, setEdges]);
 
   return (
     <div style={{ width: '100%', height: '100vh', position: 'relative', paddingTop: '23px', boxSizing: 'border-box' }}>

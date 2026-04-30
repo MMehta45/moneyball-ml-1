@@ -66,6 +66,64 @@ Tech Stack
 *   **Frontend UI:** React (Next.js or Vite) + React Flow (for the visual tree)
     
 *   **Styling:** Tailwind CSS
+
+
+Live Demo Setup
+---------------
+
+If you are opening this repository for the first time, use the steps below to run the live demo.
+
+**1) Open a terminal in the repo root**
+
+```bash
+cd <to-your-root>
+```
+
+**2) Install the Python dependencies used by the scheduler**
+
+If you do not have a virtual environment, install the needed packages for your user account:
+
+```bash
+python3 -m pip install --user networkx matplotlib deap
+```
+
+**3) Install the frontend dependencies**
+
+```bash
+npm install
+```
+
+**4) Generate the schedule with the DEAP algorithm**
+
+Run the schedule builder in one terminal:
+
+```bash
+python3 create_schedule.py
+```
+
+This creates or refreshes the schedule output files used by the app, including `schedule.json` and the files in `results/`.
+
+**5) Start the live demo frontend**
+
+Open a second terminal in the same repo root and run:
+
+```bash
+npm run dev
+```
+
+**6) Open the demo in your browser**
+
+Vite will print a local URL, usually:
+
+```bash
+http://localhost:5173
+```
+
+**7) Typical workflow for the live demo**
+
+*   Run `python3 create_schedule.py` whenever you want to regenerate the schedule.
+*   Keep `npm run dev` running to view the updated graph in the browser.
+*   If the page looks stale after regeneration, refresh the browser tab.
     
 
 Timeline (5-Week Sprint)
