@@ -1,0 +1,85 @@
+[
+  {
+    "semester": 1,
+    "term": "Fall",
+    "courses": [
+      "ECS1100",
+      "MATH2413",
+      "CS1200",
+      "CS1436",
+      "RHET1302"
+    ]
+  },
+  {
+    "semester": 2,
+    "term": "Spring",
+    "courses": [
+      "MATH2414",
+      "PHYS2325+2125",
+      "CS2305",
+      "CS1337",
+      "HIST1301"
+    ]
+  },
+  {
+    "semester": 3,
+    "term": "Fall",
+    "courses": [
+      "PHYS2326+2126",
+      "CS3305",
+      "CS2340",
+      "CS2336(Java)",
+      "HIST1302"
+    ]
+  },
+  {
+    "semester": 4,
+    "term": "Spring",
+    "courses": [
+      "MATH2418",
+      "CS3341",
+      "CS3345",
+      "CS3377"
+    ]
+  },
+  {
+    "semester": 5,
+    "term": "Fall",
+    "courses": [
+      "CS4341/4141",
+      "CS4337",
+      "CS3354",
+      "ECS3390"
+    ]
+  },
+  {
+    "semester": 6,
+    "term": "Spring",
+    "courses": [
+      "CS4349",
+      "CS3162",
+      "CS4348",
+      "AMS2325"
+    ]
+  },
+  {
+    "semester": 7,
+    "term": "Fall",
+    "courses": [
+      "CS4384",
+      "CS4347",
+      "CS4365",
+      "CS4375"
+    ]
+  },
+  {
+    "semester": 8,
+    "term": "Spring",
+    "courses": [
+      "CRIM1301",
+      "CS4485",
+      "CS4397",
+      "CS4391"
+    ]
+  }
+]
