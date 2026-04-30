@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect, useState, useEffect } from 'react';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
 import ReactFlow, {
   Node,
   Edge,
@@ -34,8 +34,13 @@ const getDifficultyColor = (score: number): string => {
 
 // Custom node with handles on left/right sides
 const CourseNode: React.FC<{ data: any }> = ({ data }) => {
+  const isInPath = data.isInPath ?? true;
+  const opacity = isInPath ? 1 : 0.25;
+
   return (
     <div
+      onMouseEnter={() => data.onHover?.(data.id)}
+      onMouseLeave={() => data.onUnhover?.()}
       style={{
         width: '100%',
         height: '100%',
@@ -46,6 +51,7 @@ const CourseNode: React.FC<{ data: any }> = ({ data }) => {
         fontFamily: 'Space Mono, monospace',
         fontSize: '19px',
         fontWeight: 'bold',
+        
       }}
     >
       <Handle type="target" position={Position.Left} />
@@ -67,9 +73,18 @@ const GraphFrontend: React.FC = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
-  useEffect(() => {
-    document.body.classList.toggle("dark", darkMode);
-  }, [darkMode]);
+  // Find all connected nodes (prerequisites and dependents)
+  const findConnectedNodes = (nodeId: string, edgesList: Edge[]): Set<string> => {
+  const connected = new Set<string>();
+  connected.add(nodeId);
+
+  edgesList.forEach((edge) => {
+    if (edge.target === nodeId) connected.add(edge.source); // direct prereqs
+    if (edge.source === nodeId) connected.add(edge.target); // direct dependents
+  });
+
+  return connected;
+};
 
   const onConnect = useCallback(
     (params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)),
@@ -148,7 +163,73 @@ const GraphFrontend: React.FC = () => {
           initialNodes.push({
             id: courseCode,
             type: 'courseNode',
-            data: { label: displayCode, difficulty: difficultyScore },
+            data: { 
+              label: displayCode, 
+              difficulty: difficultyScore,
+              id: courseCode,
+              onHover: (nodeId: string) => {
+              const connected = findConnectedNodes(nodeId, initialEdges);
+              setNodes((nds) =>
+                nds.map((n) => ({
+                  ...n,
+                  data: { ...n.data, isInPath: connected.has(n.id) },
+                  style: {
+                    ...n.style,
+                    opacity: connected.has(n.id) ? 1 : 0.15,
+                    transition: 'opacity 0.2s ease',
+                  },
+                }))
+              );
+              setEdges((eds) =>
+                eds.map((e) => {
+                  const isConnected = connected.has(e.source) && connected.has(e.target);
+                  return {
+                    ...e,
+                    style: {
+                      ...e.style,
+                      stroke: isConnected ? '#e9690e' : 'transparent',
+                      strokeWidth: isConnected ? 2 : 0,
+                      transition: 'opacity 0.2s ease',
+                    },
+                    markerEnd: {
+                      type: MarkerType.ArrowClosed,
+                      color: isConnected ? '#e9690e' : 'transparent',
+                    },
+                    animated: isConnected,
+                  };
+                })
+              );
+            },
+            onUnhover: () => {
+              setNodes((nds) =>
+                nds.map((n) => ({
+                  ...n,
+                  data: { ...n.data, isInPath: true },
+                  style: {
+                    ...n.style,
+                    opacity: 1,
+                    transition: 'opacity 0.2s ease',
+                  },
+                }))
+              );
+              setEdges((eds) =>
+                eds.map((e) => ({
+                  ...e,
+                  style: {
+                    ...e.style,
+                    stroke: '#e9690e',
+                    strokeWidth: 2,
+                    transition: 'opacity 0.2s ease',
+                  },
+                  markerEnd: {
+                    type: MarkerType.ArrowClosed,
+                    color: '#e9690e',
+                  },
+                  animated: true,
+                }))
+              );
+            },
+            },
             position: {
               x: (semester - 1) * columnSpacing,
               y: index * rowSpacing,
